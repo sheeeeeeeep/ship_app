@@ -1,0 +1,30 @@
+<ion-header>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1 class="title" style="text-align:center">登入</h1>
+
+    <ion-list>
+          <p>帳號</p>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="username"></ion-input>
+          </ion-item>
+          <div *ngIf="isWrongUser==true">
+            <p>查無使用者</p>
+          </div>
+
+          <p>密碼</p>
+          <ion-input type="password" id='box' [(ngModel)]="password"></ion-input>
+          <div *ngIf="isWrongPass==true">
+            <p>錯了拉</p>
+          </div>
+
+    </ion-list>
+    <div padding>
+      <button ion-button block (click)="goHome()">登入</button>
+    </div>
+
+
+</ion-content>
