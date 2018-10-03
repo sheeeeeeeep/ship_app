@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { Account } from '../../Account';
 import { TabsPage } from '../tabs/tabs';
 import { AccountProvider } from '../../providers/account/account';
@@ -11,6 +10,7 @@ import { Events } from 'ionic-angular';
   selector: 'page-about',
   templateUrl: 'about.html'
 })
+
 export class AboutPage {
 
   constructor(public navCtrl: NavController, public accountProvider: AccountProvider, public events: Events ) {
@@ -33,15 +33,17 @@ export class AboutPage {
       .subscribe(data => {
         this.isWrongUser = false;
         this.isWrongPass = false;
-        if(data.length>0){
+        
+        try{
             this.realPassword=data[0].password;
             if(this.password == this.realPassword){
               this.navCtrl.push(TabsPage);
             }else{
               this.isWrongPass = true;
             }
-        }else{
+        }catch(err){
           this.isWrongUser = true;
+          console.log(err)
         }
       });
 

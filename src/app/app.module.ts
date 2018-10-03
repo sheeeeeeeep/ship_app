@@ -59,3 +59,15 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class AppModule {}
+
+// import { IonicTokenService } from 'ionic-token-auth';
+ 
+// @NgModule({
+//     imports: [
+//         BrowserModule,
+//         HttpModule
+//     ],
+//     declarations: [ AppComponent ],
+//     providers:    [ IonicTokenService ],
+//     bootstrap:    [ AppComponent ]
+// })

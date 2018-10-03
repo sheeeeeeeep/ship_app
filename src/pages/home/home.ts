@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-about',
+  templateUrl: '../about/about.html'
 })
 export class HomePage {
 
@@ -11,7 +11,7 @@ export class HomePage {
 
   }
   goHome() {
-  this.navCtrl.push(ContactPage);
+  
 
   }
 }

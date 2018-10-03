@@ -16,7 +16,7 @@ export class AccountProvider {
   }
 
   private url_1: string = "http://my-json-server.typicode.com/Yi-Zhen/Ionic/account/";
-
+  
 
   getAccount(username: string): Observable<Account>{
     let url_2: string = `?username=${username}`;
