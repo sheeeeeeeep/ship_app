@@ -15,8 +15,8 @@ export class AccountProvider {
   constructor(public http: HttpClient) {
   }
 
-  private url_1: string = "http://my-json-server.typicode.com/Yi-Zhen/Ionic/account/";
-  
+  //private url_1: string = "http://my-json-server.typicode.com/Yi-Zhen/Ionic/account/";
+  private url_1: string = "http://localhost:8000/api/pilot/";
 
   getAccount(username: string): Observable<Account>{
     let url_2: string = `?username=${username}`;
