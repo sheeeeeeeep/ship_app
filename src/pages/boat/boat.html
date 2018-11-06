@@ -9,10 +9,55 @@
   <ion-navbar>
     <ion-title style="text-align:center">{{title}}</ion-title>
   </ion-navbar>
+  <ion-segment [(ngModel)]="subPage"  color="primary">
+    <ion-segment-button value="order">
+      排班順位
+    </ion-segment-button>
+    <ion-segment-button value="status">
+      狀態表格
+    </ion-segment-button>
+  </ion-segment>
+
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-content padding>
+  <div [ngSwitch] = "subPage">
+
+    <ion-grid *ngSwitchCase="'order'">
+      <ion-row class="row-header">
+        <ion-col>順位</ion-col>
+        <ion-col>引水人</ion-col>
+        <ion-col>報到時間</ion-col>
+      </ion-row>
+      <ion-row *ngFor = "let order of orders">
+        <ion-col>0</ion-col>
+        <ion-col>{{order.pilot_id}} {{order.pilot_name}}</ion-col>
+        <ion-col>{{order.created}}</ion-col>
+      </ion-row>
+    </ion-grid>
+<!--////////////////////////////////////////-->
+  <ion-grid *ngSwitchCase="'status'">
+    <ion-row class="row-header">
+      <ion-col>引水人</ion-col>
+      <ion-col>工作狀態</ion-col>
+      <ion-col>前日大夜班次數</ion-col>
+      <ion-col>船隻資訊(狀態/船名/碼頭/噸位)</ion-col>
+    </ion-row>
+    <ion-row *ngFor = "let status of statuses">
+      <ion-col>{{status.pilot_id}} {{status.name}}</ion-col>
+      <ion-col>{{status.status}}</ion-col>
+      <ion-col>{{status.night_shift}}</ion-col>
+      <ion-col>{{status.ship_id}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  </div>
+
 
 </ion-content>

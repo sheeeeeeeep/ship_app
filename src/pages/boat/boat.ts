@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OrderProvider } from '../../providers/order/order';
+import { HttpClientModule } from '@angular/common/http';
+
 
 /**
  * Generated class for the BoatPage page.
@@ -15,13 +18,54 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BoatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _orderProvider: OrderProvider) {
+
   }
 
+  subPage: string = "order";
+
   title:string = "當班資訊";
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BoatPage');
+
+/*  orders = [
+    {
+      "key":1,
+      "pilot_id": "0014",
+      "name": "朱東旭",
+      "check_in_time": "2018-04-05T03:30:00Z"
+    },
+    {
+      "key": 2,
+      "pilot_id": "0015",
+      "name": "朱吉諾",
+      "check_in_time": "2018-04-05T04:52:00Z"
+    }
+  ];*/
+
+  public orders = [];
+
+  ionViewDidLoad(){
+    this._orderProvider.getOrder()
+        .subscribe(data => this.orders = data);
   }
+
+  statuses = [
+    {
+      "pilot_id": "0014",
+      "name": "朱東旭",
+      "status": "請假(無代班)",
+      "night_shift": 1,
+      "ship_id": null
+    },
+    {
+      "pilot_id": "0015",
+      "name": "朱吉諾",
+      "status": "工作中",
+      "night_shift": 0,
+      "ship_id": "出港 / STOLT BASUTO / 1058 -> S1 / 16442"
+    }
+  ];
+
+
+
 
 }
