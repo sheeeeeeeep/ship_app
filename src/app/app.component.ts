@@ -11,7 +11,7 @@ import { Events } from 'ionic-angular';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AboutPage;
+  rootPage:any = TabsPage;
 
   public footerIsHidden: boolean = false;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
