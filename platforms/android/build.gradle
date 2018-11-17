@@ -21,13 +21,10 @@ apply plugin: 'com.android.application'
 
 buildscript {
     repositories {
-        google()
         jcenter()
-        maven { url 'https://maven.fabric.io/public' } // Fabrics Maven repository from cordova-plugin-firebase
         maven {
             url "https://maven.google.com"
         }
-
     }
 
     // Switch the Android Gradle plugin version requirement depending on the
@@ -35,18 +32,14 @@ buildscript {
     // http://tools.android.com/tech-docs/new-build-system/version-compatibility
     // and https://issues.apache.org/jira/browse/CB-8143
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.google.gms:google-services:4.1.0' // google-services dependency from cordova-plugin-firebase
-        classpath 'io.fabric.tools:gradle:1.25.4' // fabric dependency from cordova-plugin-firebase
+        classpath 'com.android.tools.build:gradle:2.2.3'
     }
 }
 
 // Allow plugins to declare Maven dependencies via build-extras.gradle.
 allprojects {
     repositories {
-        google()
         jcenter()
-         // Google's Maven repository from cordova-plugin-firebase
         maven {
             url "https://maven.google.com"
         }
@@ -99,7 +92,6 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-firebase/starter-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -180,7 +172,7 @@ android {
         applicationId privateHelpers.extractStringFromManifest("package")
 
         if (cdvMinSdkVersion != null) {
-            minSdkVersion 16
+            minSdkVersion cdvMinSdkVersion
         }
     }
 
@@ -259,20 +251,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
-    compile project(":CordovaLib")
-    compile "com.google.android.gms:play-services-location:11.+"
-    compile "com.google.android.gms:play-services-tagmanager:11.+"
-    compile "com.google.firebase:firebase-core:11.+"
-    compile "com.google.firebase:firebase-messaging:11.+"
-    compile "com.google.firebase:firebase-config:11.+"
-    compile "com.google.firebase:firebase-perf:11.+"
+    debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    releaseCompile(project(path: "CordovaLib", configuration: "release"))
     // SUB-PROJECT DEPENDENCIES END
-}
-
-configurations.all {
-    resolutionStrategy {
-        force 'com.android.support:support-v4:27.1.0'
-    }
 }
 
 def promptForReleaseKeyPassword() {

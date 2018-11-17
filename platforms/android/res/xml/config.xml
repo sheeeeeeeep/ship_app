@@ -15,13 +15,6 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="FirebasePlugin">
-        <param name="android-package" value="org.apache.cordova.firebase.FirebasePlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="GeofencePlugin">
-        <param name="android-package" value="com.cowbell.cordova.geofence.GeofencePlugin" />
-    </feature>
     <feature name="Keyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.IonicKeyboard" />
     </feature>

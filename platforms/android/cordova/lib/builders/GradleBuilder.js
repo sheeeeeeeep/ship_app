@@ -133,11 +133,9 @@ GradleBuilder.prototype.prepBuildFiles = function () {
     subProjects.forEach(function (p) {
         console.log('Subproject Path: ' + p);
         var libName = p.replace(/[/\\]/g, ':').replace(name + '-', '');
-        //depsList += '    debugCompile(project(path: "' + 'CordovaLib' + '", configuration: "debug"))';
-        //insertExclude(p);
-        //depsList += '    releaseCompile(project(path: "' + 'CordovaLib' + '", configuration: "release"))';
-        //insertExclude(p);
-        depsList += '    compile project(":CordovaLib")';
+        depsList += '    debugCompile(project(path: "' + libName + '", configuration: "debug"))';
+        insertExclude(p);
+        depsList += '    releaseCompile(project(path: "' + libName + '", configuration: "release"))';
         insertExclude(p);
     });
     // For why we do this mapping: https://issues.apache.org/jira/browse/CB-8390
