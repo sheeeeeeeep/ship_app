@@ -14,12 +14,26 @@ import { NewsPage } from '../pages/news/news';
 import { NotifPage } from '../pages/notif/notif';
 import { SettingPage } from '../pages/setting/setting';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AccountProvider } from '../providers/account/account';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderProvider } from '../providers/order/order';
+import { FcmProvider } from '../providers/fcm/fcm';
+
+import { Firebase } from '@ionic-native/firebase';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+const firebase = {
+    apiKey: "AIzaSyCSLv9NbQutolSd4_WmXa0_9UkUB0Nl-dY",
+    authDomain: "ship-app-backend.firebaseapp.com",
+    databaseURL: "https://ship-app-backend.firebaseio.com",
+    projectId: "ship-app-backend",
+    storageBucket: "ship-app-backend.appspot.com",
+    messagingSenderId: "511913116476"
+};
 
 @NgModule({
   declarations: [
@@ -37,7 +51,9 @@ import { OrderProvider } from '../providers/order/order';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(firebase), 
+    AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +73,9 @@ import { OrderProvider } from '../providers/order/order';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AccountProvider,
-    OrderProvider
+    OrderProvider,
+    Firebase,
+    FcmProvider,
   ]
 })
 export class AppModule {}
