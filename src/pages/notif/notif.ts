@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import * as firebase from 'Firebase';
+
+
 /**
  * Generated class for the NotifPage page.
  *
@@ -11,17 +14,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-notif',
-  templateUrl: 'notif.html',
+  templateUrl: 'notif.html'
 })
-export class NotifPage {
 
+
+export class NotifPage {
+  shit: string = "";
+  public mynotif = {};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // this.shit = navParams.get('param1');
   }
 
   title: string="通知";
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NotifPage');
+      const notifRef: firebase.database.Reference = firebase.database().ref(`/notif/notif/`);
+      
+      notifRef.on('child_changed', notifSnapshot => {
+        this.mynotif = notifSnapshot.val();
+        alert(JSON.stringify(notifSnapshot.val()));
+      });
   }
 
 }
+

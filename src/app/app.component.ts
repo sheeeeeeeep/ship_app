@@ -10,7 +10,13 @@ import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
+// import { NotifPage } from '../pages/notif/notif';
 import { Events } from 'ionic-angular';
+// import { NavController} from 'ionic-angular';
+
+
+
+import * as firebase from 'firebase/app';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +36,9 @@ export class MyApp {
             duration: 3000
           });
           toast.present();
-          
+          // this.navCtrl.push(NotifPage, {
+          //     param1: msg.body
+          // });
 
         })
       )

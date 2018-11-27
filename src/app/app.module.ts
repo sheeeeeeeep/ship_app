@@ -26,7 +26,8 @@ import { Firebase } from '@ionic-native/firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
-const firebase = {
+
+const firebaseConfifg = {
     apiKey: "AIzaSyCSLv9NbQutolSd4_WmXa0_9UkUB0Nl-dY",
     authDomain: "ship-app-backend.firebaseapp.com",
     databaseURL: "https://ship-app-backend.firebaseio.com",
@@ -52,7 +53,7 @@ const firebase = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    AngularFireModule.initializeApp(firebase), 
+    AngularFireModule.initializeApp(firebaseConfifg), 
     AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
