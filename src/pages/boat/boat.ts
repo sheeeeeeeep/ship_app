@@ -24,6 +24,8 @@ export class BoatPage {
 
   subPage: string = "order";
 
+  
+
   title:string = "當班資訊";
 
 /*  orders = [

@@ -10,9 +10,91 @@
     <ion-title style="text-align:center">{{title}}</ion-title>
   </ion-navbar>
 
+  <ion-segment [(ngModel)]="subPage"  color="primary">
+    <ion-segment-button value="time">
+      工作時間
+    </ion-segment-button>
+    <ion-segment-button value="record">
+      連續帶船紀錄
+    </ion-segment-button>
+  </ion-segment>
+
 </ion-header>
 
-
 <ion-content padding>
+  <div [ngSwitch] = "subPage">
+    <div *ngSwitchCase="'time'">
+      <ion-card>
+        <ion-card-header class="cardHead">
+          單趟累積連續總工時
+        </ion-card-header>
+
+        <ion-card-content>
+
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card>
+        <ion-card-header class="cardHead">
+          個人每月平均日工時
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-select [(ngModel)]="date_person" multiple="true" class="myTime">
+            <ion-option value="new">2018/11</ion-option>
+            <ion-option value="old">2018/10</ion-option>
+          </ion-select>
+          <span style="font-size: 20px">白天班</span>
+          <br><br>
+          <span style="font-size: 20px">大夜班</span>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header class="cardHead">
+          連續帶船組內平均日工時
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-select [(ngModel)]="date_group" multiple="true" class="myTime">
+            <ion-option value="new">2018/11</ion-option>
+            <ion-option value="old">2018/10</ion-option>
+          </ion-select>
+          <span style="font-size: 20px">白天班</span>
+          <br><br>
+          <span style="font-size: 20px">大夜班</span>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+<!--////////////////////////////////////////-->
+
+
+
+    <ion-scroll scrollX="true" class="horizonScroll">
+
+      <ion-grid *ngSwitchCase="'record'" class="z-depth-2" style="width: 150%">
+        <ion-row style="text-align: right, font-text: 18px">{{date1}}</ion-row>
+        <ion-row nowrap class="row-header">
+          <ion-col col-2>發生時間</ion-col> 
+          <ion-col col-2 style="font-size: 13px">連續帶船引水人</ion-col>
+          <ion-col col-2 style="font-size: 13px">連續休息引水人</ion-col>
+          <ion-col col-6>船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-scroll>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
 
 </ion-content>

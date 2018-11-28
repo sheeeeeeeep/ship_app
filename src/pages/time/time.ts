@@ -19,7 +19,15 @@ export class TimePage {
   }
 
 
+
+
   title:string = "統計資訊";
+  subPage: string = "time";
+  public date_person = "new";
+  public date_group = "new";
+  date1 = "2018/08/18";
+  date2 = "2018/08/19"
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TimePage');

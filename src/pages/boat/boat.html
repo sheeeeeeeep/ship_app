@@ -24,33 +24,40 @@
 <ion-content padding>
   <div [ngSwitch] = "subPage">
 
-    <ion-grid *ngSwitchCase="'order'">
+    <ion-grid *ngSwitchCase="'order'" class="z-depth-2">
       <ion-row class="row-header">
-        <ion-col>順位</ion-col>
-        <ion-col>引水人</ion-col>
-        <ion-col>報到時間</ion-col>
+        <ion-col col-2>順位</ion-col>
+        <ion-col col-4>引水人</ion-col>
+        <ion-col col-6>報到時間</ion-col>
       </ion-row>
-      <ion-row *ngFor = "let order of orders">
-        <ion-col>0</ion-col>
+      <ion-row *ngFor = "let order of orders;let i=index">
+        <ion-col>{{i}}</ion-col>
         <ion-col>{{order.pilot_id}} {{order.pilot_name}}</ion-col>
         <ion-col>{{order.created}}</ion-col>
       </ion-row>
     </ion-grid>
+
 <!--////////////////////////////////////////-->
-  <ion-grid *ngSwitchCase="'status'">
-    <ion-row class="row-header">
-      <ion-col>引水人</ion-col>
-      <ion-col>工作狀態</ion-col>
-      <ion-col>前日大夜班次數</ion-col>
-      <ion-col>船隻資訊(狀態/船名/碼頭/噸位)</ion-col>
-    </ion-row>
-    <ion-row *ngFor = "let status of statuses">
-      <ion-col>{{status.pilot_id}} {{status.name}}</ion-col>
-      <ion-col>{{status.status}}</ion-col>
-      <ion-col>{{status.night_shift}}</ion-col>
-      <ion-col>{{status.ship_id}}</ion-col>
-    </ion-row>
-  </ion-grid>
+
+
+
+    <ion-scroll scrollX="true" class="horizonScroll">
+      <ion-grid *ngSwitchCase="'status'" class="z-depth-2" style="width: 200%">
+        <ion-row nowrap class="row-header">
+          <ion-col col-2>引水人  </ion-col>
+          <ion-col col-2>工作狀態</ion-col>
+          <ion-col col-1 style="font-size: 13px">前日大夜班次數</ion-col>
+          <ion-col col-7>船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
+        </ion-row>
+        <ion-row nowrap *ngFor = "let status of statuses">
+          <ion-col col-2>{{status.pilot_id}} {{status.name}}</ion-col>
+          <ion-col col-2>{{status.status}}</ion-col>
+          <ion-col col-1>{{status.night_shift}}</ion-col>
+          <ion-col col-7>{{status.ship_id}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-scroll>
+
 
 
 

@@ -13,11 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      {{shit}}
-      
-    </ion-item>
-  </ion-list>
+<ion-content   padding>
+  <ion-card>
+    <ion-card-header class="cardHead notiHead">
+      <span style="color: black">{{time}}</span>
+      <br><span class="dot_orange"></span>
+      {{ship}}
+        <br>{{head}}
+    </ion-card-header>
+
+    <ion-card-content style="padding-top: 10px">
+      {{detail}}
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

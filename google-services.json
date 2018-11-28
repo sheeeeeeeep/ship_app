@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "511913116476",
+    "firebase_url": "https://ship-app-backend.firebaseio.com",
+    "project_id": "ship-app-backend",
+    "storage_bucket": "ship-app-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511913116476:android:20d2135824484495",
+        "android_client_info": {
+          "package_name": "com.app.ship"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511913116476-5aoc50v1k0ovlgk48vj244qkjmkugdlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8uKfNndpAcWRFBJuYV4Xh9kI_eWyoWHA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

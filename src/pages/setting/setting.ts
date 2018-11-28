@@ -18,7 +18,11 @@ export class SettingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  title: string="設定";
+  title:   string="設定";
+  id:string = "0214";
+  name:string = "朱東旭";
+  isPush = true;
+  version = "0.0.0";
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingPage');
