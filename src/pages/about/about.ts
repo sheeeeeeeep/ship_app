@@ -33,7 +33,7 @@ export class AboutPage {
       .subscribe(data => {
         this.isWrongUser = false;
         this.isWrongPass = false;
-        
+
         try{
             this.realPassword=data[0].password;
             if(this.password == this.realPassword){

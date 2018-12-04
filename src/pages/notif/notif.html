@@ -4,6 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
 <ion-header>
 
   <ion-navbar>
@@ -13,18 +14,21 @@
 </ion-header>
 
 
-<ion-content   padding>
-  <ion-card>
+<ion-content padding >
+  <button ion-button (click)="clearData()">clear</button>
+  <ion-card *ngFor="let noti of tt">
     <ion-card-header class="cardHead notiHead">
-      <span style="color: black">{{time}}</span>
+      <span style="color: black">{{noti.a}}</span>
       <br><span class="dot_orange"></span>
-      {{ship}}
-        <br>{{head}}
+      {{noti.b}}
+        <br>{{noti.c}}
     </ion-card-header>
 
     <ion-card-content style="padding-top: 10px">
-      {{detail}}
+      {{noti.d}}
 
     </ion-card-content>
+
   </ion-card>
+
 </ion-content>
