@@ -25,7 +25,10 @@ import { Firebase } from '@ionic-native/firebase';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { GlobalVarProvider } from '../providers/global-var/global-var';
 
+import { IOrder } from '../IOrder';
+import { StatusProvider } from '../providers/status/status';
 
 const firebaseConfifg = {
     apiKey: "AIzaSyCSLv9NbQutolSd4_WmXa0_9UkUB0Nl-dY",
@@ -53,7 +56,7 @@ const firebaseConfifg = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfifg), 
+    AngularFireModule.initializeApp(firebaseConfifg),
     AngularFirestoreModule,
   ],
   bootstrap: [IonicApp],
@@ -77,12 +80,14 @@ const firebaseConfifg = {
     OrderProvider,
     Firebase,
     FcmProvider,
+    GlobalVarProvider,
+    StatusProvider,
   ]
 })
 export class AppModule {}
 
 // import { IonicTokenService } from 'ionic-token-auth';
- 
+
 // @NgModule({
 //     imports: [
 //         BrowserModule,

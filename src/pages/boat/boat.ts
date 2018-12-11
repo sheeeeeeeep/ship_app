@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OrderProvider } from '../../providers/order/order';
 import { HttpClientModule } from '@angular/common/http';
+import { StatusProvider } from '../../providers/status/status';
 
 
 /**
@@ -18,13 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class BoatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _orderProvider: OrderProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private orderProvider: OrderProvider, private statusProvider: StatusProvider) {
+
+
+
 
   }
 
   subPage: string = "order";
 
-  
+
 
   title:string = "當班資訊";
 
@@ -44,13 +48,17 @@ export class BoatPage {
   ];*/
 
   public orders = [];
+  public statuses = [];
 
-  ionViewDidLoad(){
-    this._orderProvider.getOrder()
+  ionViewWillEnter(){
+    this.orderProvider.getOrder()
         .subscribe(data => this.orders = data);
+    this.statusProvider.getStatus()
+        .subscribe(data => this.statuses = data);
+
   }
 
-  statuses = [
+  /*statuses = [
     {
       "pilot_id": "0014",
       "name": "朱東旭",
@@ -65,7 +73,7 @@ export class BoatPage {
       "night_shift": 0,
       "ship_id": "出港 / STOLT BASUTO / 1058 -> S1 / 16442"
     }
-  ];
+  ];*/
 
 
 

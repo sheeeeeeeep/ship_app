@@ -12,18 +12,19 @@ import { GlobalVarProvider } from '../../providers/global-var/global-var';
   and Angular DI.
 */
 @Injectable()
-export class OrderProvider {
+export class StatusProvider {
 
   constructor(private http: HttpClient, public gv: GlobalVarProvider) {
   }
 
-  private url: string = "http://localhost:8100/api/api/order/";
+  private url: string = "http://localhost:8100/api/api/status/";
   private  headers = { headers: new HttpHeaders({
     "Content-Type": "application/json",
     "Authorization": `JWT ${this.gv.TOKEN}` }) };
 
-  getOrder(): Observable<IOrder[]>{
-    return this.http.get<IOrder[]>(this.url, this.headers);
+  getStatus(): Observable<IStatus[]>{
+    return this.http.get<IStatus[]>(this.url, this.headers);
   }
+
 
 }

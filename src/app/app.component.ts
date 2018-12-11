@@ -22,11 +22,11 @@ import * as firebase from 'firebase/app';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = AboutPage;
 
   public footerIsHidden: boolean = false;
   constructor(platform: Platform, fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
-    platform.ready().then(() => {
+  /*  platform.ready().then(() => {
       fcm.getToken()
       fcm.listenToNotifications().pipe(
         tap(msg => {
@@ -51,6 +51,6 @@ export class MyApp {
 
     events.subscribe('hideHeader', (data)=>{
       this.footerIsHidden = data.isHidden;
-    })
+    })*/
   }
 }

@@ -4,5 +4,11 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "pro_id": "820773ab"
+  "pro_id": "820773ab",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://fleet-geode-218517.appspot.com/"
+    }
+  ]
 }
