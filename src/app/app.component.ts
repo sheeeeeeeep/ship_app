@@ -4,15 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FcmProvider } from '../providers/fcm/fcm';
+import { GlobalVars } from '../providers/globalvars/globalvars'
 import { ToastController } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
-// import { NotifPage } from '../pages/notif/notif';
 import { Events } from 'ionic-angular';
-// import { NavController} from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -31,11 +31,24 @@ export class MyApp {
       fcm.listenToNotifications().pipe(
         tap(msg => {
           // show a toast
-          const toast = toastCtrl.create({
-            message: msg.body,
-            duration: 3000
+          this.storage.get('message').then((msgs) => {
+            this.notifs = msgs;
+            this.notifs.push(msg);
+            this.storage.ready().then(() => {
+              this.storage.set('message', this.notifs);
+              // location.reload()
+            });
           });
-          toast.present();
+          // location.reload()
+          // gv.setMyGlobalVar(msg.title,msg.body);
+
+          // alert(msg.body)
+
+          // const toast = toastCtrl.create({
+          //   message: msg.body,
+          //   duration: 3000
+          // });
+          // toast.present();
           // this.navCtrl.push(NotifPage, {
           //     param1: msg.body
           // });

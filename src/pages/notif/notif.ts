@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import * as firebase from 'Firebase';
-
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the NotifPage page.
@@ -19,25 +18,28 @@ import * as firebase from 'Firebase';
 
 
 export class NotifPage {
-  shit: string = "";
+  shit = '';
   public mynotif = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // this.shit = navParams.get('param1');
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage) {
 
+  }
+  tt = [];
   title: string="通知";
-  time = "2018/08/09 14:20";
-  ship = "STOLT BASUTO ";
-  head = "被交換給 0216朱吉諾";
-  detail = "出港 / STOLT BASUTO / 1058 -> S1 / 16442";
+  // time = "2018/08/09 14:20";
+  // ship = "STOLT BASUTO ";
+  // head = "被交換給 0216朱吉諾";
+  // detail = "出港 / STOLT BASUTO / 1058 -> S1 / 16442";
 
-  ionViewDidLoad() {
-      // const notifRef: firebase.database.Reference = firebase.database().ref(`/notif/notif/`);
+  ionViewWillEnter(){
 
-      // notifRef.on('child_changed', notifSnapshot => {
-      //   this.mynotif = notifSnapshot.val();
-      //   alert(JSON.stringify(notifSnapshot.val()));
-      // });
+    this.storage.get('message').then((msg) => {
+      console.log(msg);
+      this.tt = msg;
+
+    });
   }
-
+  clearData(){
+    this.storage.clear();
+    // location.reload()
+  }
 }

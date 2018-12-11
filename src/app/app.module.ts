@@ -25,6 +25,7 @@ import { Firebase } from '@ionic-native/firebase';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { IonicStorageModule } from '@ionic/storage';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 
 import { IOrder } from '../IOrder';
@@ -55,6 +56,7 @@ const firebaseConfifg = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfifg),
     AngularFirestoreModule,
