@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'Firebase';
 import { Storage } from '@ionic/storage';
+import { FcmProvider } from '../../providers/fcm/fcm';
 
 /**
  * Generated class for the NotifPage page.
@@ -20,7 +21,7 @@ import { Storage } from '@ionic/storage';
 export class NotifPage {
   shit = '';
   public mynotif = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public fcm: FcmProvider) {
 
   }
   tt = [];
@@ -38,8 +39,16 @@ export class NotifPage {
 
     });
   }
-  clearData(){
+  clear(){
     this.storage.clear();
-    // location.reload()
+  }
+
+  subA(){
+    this.fcm.unsubscribeFromTopic('B');
+    this.fcm.subscribeToTopic('A');
+  }
+  subB(){
+    this.fcm.unsubscribeFromTopic('A');
+    this.fcm.subscribeToTopic('B');
   }
 }

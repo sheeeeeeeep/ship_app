@@ -22,7 +22,7 @@ export class MyApp {
   notifs = [];
 
   public footerIsHidden: boolean = false;
-  constructor(platform: Platform, fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage) {
+  constructor(platform: Platform, public fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage) {
     this.storage.get('message').then((msgs) => {
       if(!msgs){
         storage.ready().then(() => {
@@ -32,6 +32,7 @@ export class MyApp {
     });
     platform.ready().then(() => {
       fcm.getToken();
+      // fcm.subscribeToTopic('gino');
       fcm.listenToNotifications().pipe(
         tap(msg => {
           // show a toast

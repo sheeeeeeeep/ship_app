@@ -50,6 +50,12 @@ export class FcmProvider {
     return devicesRef.doc(token).set(docData);
   }
 
+  subscribeToTopic(topic){
+    this.firebaseNative.subscribe(topic);
+  }
+  unsubscribeFromTopic(topic){
+    this.firebaseNative.unsubscribe(topic);
+  }
   // Listen to incoming FCM messages
   listenToNotifications() {return this.firebaseNative.onNotificationOpen();}
 
