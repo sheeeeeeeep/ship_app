@@ -1,6 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IOrder } from '../../IOrder';
+import { IStatus } from '../../IOrder';
+import { Token } from '../../IOrder';
 import { Observable} from 'rxjs/Observable';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
@@ -29,7 +31,9 @@ export class BackendProvider {
       "Content-Type": "application/json",
 
      }) };
-    return this.http.post<Token[]>(url2, JSON.stringify(postParams),headers);
+    // var res: Observable<Token[]>;
+    var res = this.http.post<Token[]>(url2, JSON.stringify(postParams),headers);
+    return res
 
   }
 
@@ -42,12 +46,16 @@ export class BackendProvider {
 
   getOrder(): Observable<IOrder[]>{
     let url2 = this.url + "api/order/";
-    return this.http.get<IOrder[]>(url2, this.headers());
+    // var res: Observable<IOrder[]>(;
+    var res = this.http.get<IOrder[]>(url2, this.headers());
+    return res;
   }
 
   getStatus(): Observable<IStatus[]>{
     let url2 = this.url + "api/status/";
-    return this.http.get<IStatus[]>(url2, this.headers());
+    // var res = Observable<IStatus[]> ;
+    var res = this.http.get<IStatus[]>(url2, this.headers());
+    return res;
   }
 
 

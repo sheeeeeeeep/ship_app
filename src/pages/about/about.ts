@@ -55,12 +55,12 @@ export class AboutPage {
   }*/
 
   goHome(){
-    
+
   // let url2 = "http://localhost:8100/api/api-token-auth/"
 
     this.backend.getToken(this.username, this.password)
       .subscribe(data => {
-        this.gv.TOKEN = data.access;
+        this.gv.TOKEN = data['access'];
         //console.log(data.refresh);
         console.log(this.gv.TOKEN);
         //this.navCtrl.push(TabsPage);
