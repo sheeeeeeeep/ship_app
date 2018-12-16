@@ -15,7 +15,9 @@
 
 
 <ion-content padding >
-  <button ion-button (click)="clearData()">clear</button>
+  <button ion-button (click)="subA()">A</button>
+  <button ion-button (click)="subB()">B</button>
+  <button ion-button (click)="clear()">clear</button>
   <ion-card *ngFor="let noti of tt">
     <ion-card-header class="cardHead notiHead">
       <span style="color: black">{{noti.a}}</span>

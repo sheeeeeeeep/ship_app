@@ -14,10 +14,6 @@ import { AboutPage } from '../pages/about/about';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-
-
-import * as firebase from 'firebase/app';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,39 +21,71 @@ export class MyApp {
   rootPage:any = AboutPage;
 
   public footerIsHidden: boolean = false;
+<<<<<<< HEAD
   constructor(platform: Platform, fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events) {
   /*  platform.ready().then(() => {
       fcm.getToken()
+=======
+  constructor(platform: Platform, public fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage) {
+    this.storage.get('message').then((msgs) => {
+      if(!msgs){
+        storage.ready().then(() => {
+          this.storage.set('message',this.notifs);
+        });
+      }
+    });
+    platform.ready().then(() => {
+      fcm.getToken();
+      // fcm.subscribeToTopic('gino');
+>>>>>>> e1b98b5761fea9ba38c25fec1bc709eb8f4c8fed
       fcm.listenToNotifications().pipe(
         tap(msg => {
           // show a toast
-          this.storage.get('message').then((msgs) => {
-            this.notifs = msgs;
-            this.notifs.push(msg);
-            this.storage.ready().then(() => {
-              this.storage.set('message', this.notifs);
-              // location.reload()
+            if(msg.wasTapped){
+              console.log("Received in background");
+            } else {
+              console.log("Received in foreground");
+                let toast = toastCtrl.create({
+                message: msg.body,
+                duration: 3000,
+                position: 'top',
+                cssClass: "toast-message",
+              });
+              toast.onDidDismiss(() => {
+                console.log('Dismissed toast');
+              });
+
+              toast.present();
+              this.storage.get('message').then((msgs) => {
+                this.notifs = msgs;
+                this.notifs.push(msg);
+                this.storage.ready().then(() => {
+                  this.storage.set('message', this.notifs);
+                });
             });
-          });
-          // location.reload()
-          // gv.setMyGlobalVar(msg.title,msg.body);
 
-          // alert(msg.body)
-
-          // const toast = toastCtrl.create({
-          //   message: msg.body,
-          //   duration: 3000
-          // });
-          // toast.present();
-          // this.navCtrl.push(NotifPage, {
-          //     param1: msg.body
-          // });
-
+            };
+            // this.storage.get('message').then((msgs) => {
+            //   this.notifs = msgs;
+            //   this.notifs.push(msg);
+            //   this.storage.ready().then(() => {
+            //     this.storage.set('message', this.notifs);
+            //   });
+            // });
         })
       )
       .subscribe()
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
+      //   fcm.listenToNotifications().subscribe(data =>{
+      //     this.storage.get('message').then((msgs) => {
+      //     this.notifs = msgs;
+      //     this.notifs.push(data);
+      //     this.storage.ready().then(() => {
+      //       this.storage.set('message', this.notifs);
+      //     });
+      //   });
+      // });
+      
       statusBar.styleDefault();
       splashScreen.hide();
     });
