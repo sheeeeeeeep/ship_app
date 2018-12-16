@@ -4,27 +4,34 @@
 
 
 <ion-content padding>
-  <h1 class="title" style="text-align:center">登入</h1>
+  <h1 class="title" id="loginHead">登入</h1>
 
-    <ion-list>
-          <p>帳號</p>
-          <ion-item>
-            <ion-input type="text" [(ngModel)]="username"></ion-input>
-          </ion-item>
-          <div *ngIf="isWrongUser==true">
-            <p>查無使用者</p>
-          </div>
+  <p class="loginP">帳號</p>
+  <ion-input type="text" class="box" [(ngModel)]="username"></ion-input>
+  <div *ngIf="isWrongUser==true">
+    <p class="errorP">查無此帳號</p>
+  </div>
 
-          <p>密碼</p>
-          <ion-input type="password" id='box' [(ngModel)]="password"></ion-input>
-          <div *ngIf="isWrongPass==true">
-            <p>錯了拉</p>
-          </div>
+  <br>
+  <p class="loginP">密碼</p>
+  <ion-input type="password" class="box" [(ngModel)]="password"></ion-input>
+  <div *ngIf="isWrongPass==true">
+    <p class="errorP">密碼錯誤</p>
+  </div>
 
-    </ion-list>
-    <div padding>
-      <button ion-button block (click)="goHome()">登入</button>
-    </div>
+  <p id="forgetPass">忘記密碼</p>
+  <br>
+  <button ion-button block (click)="goHome()">登入</button>
+  <br><br><br><br><br><br>
+  <button ion-button block (click)="getUser()">使用者</button>
+  <button ion-button block (click)="getOrder()">Order</button>
+  <button ion-button block (click)="enter()">進去</button>
+
+
+
+
+
+
 
 
 </ion-content>
