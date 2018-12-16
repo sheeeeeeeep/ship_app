@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { OrderProvider } from '../../providers/order/order';
 import { HttpClientModule } from '@angular/common/http';
-import { StatusProvider } from '../../providers/status/status';
+import { BackendProvider } from '../../providers/backend/backend';
+
+
 
 
 /**
@@ -19,7 +20,7 @@ import { StatusProvider } from '../../providers/status/status';
 })
 export class BoatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private orderProvider: OrderProvider, private statusProvider: StatusProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public  backend:BackendProvider) {
 
 
 
@@ -51,9 +52,9 @@ export class BoatPage {
   public statuses = [];
 
   ionViewWillEnter(){
-    this.orderProvider.getOrder()
+    this.backend.getOrder()
         .subscribe(data => this.orders = data);
-    this.statusProvider.getStatus()
+    this.backend.getStatus()
         .subscribe(data => this.statuses = data);
 
   }

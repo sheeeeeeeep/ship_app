@@ -8,6 +8,8 @@ import { Events } from 'ionic-angular';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { IOrder } from '../../IOrder';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
+import { BackendProvider } from '../../providers/backend/backend';
+
 
 @Component({
   selector: 'page-about',
@@ -16,7 +18,7 @@ import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public accountProvider: AccountProvider, public events: Events, private http: HttpClient, public gv: GlobalVarProvider ) {
+  constructor(public navCtrl: NavController, public accountProvider: AccountProvider, public events: Events, private http: HttpClient, public gv: GlobalVarProvider, public  backend:BackendProvider) {
       events.publish('hideHeader', {isHidden: true});
   }
   ionViewWillLeave(){
@@ -53,20 +55,13 @@ export class AboutPage {
   }*/
 
   goHome(){
-    let postParams =  {
-      "username": this.username,
-      "password": this.password,
-    }
-   let headers = { headers: new HttpHeaders({
-     "Content-Type": "application/json",
+    
+  // let url2 = "http://localhost:8100/api/api-token-auth/"
 
-    }) };
-   //let url = "https://fleet-geode-218517.appspot.com/api-token-auth/";
-   let url2 = "http://localhost:8100/api/api-token-auth/"
-
-    this.http.post<Token[]>(url2, JSON.stringify(postParams),headers)
+    this.backend.getToken(this.username, this.password)
       .subscribe(data => {
-        this.gv.TOKEN = data.token;
+        this.gv.TOKEN = data.access;
+        //console.log(data.refresh);
         console.log(this.gv.TOKEN);
         //this.navCtrl.push(TabsPage);
 

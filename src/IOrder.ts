@@ -5,7 +5,8 @@ export interface IOrder{
 }
 
 export interface Token{
-  token: string;
+  access: string;
+  refresh: string;
 }
 
 export interface IStatus{
