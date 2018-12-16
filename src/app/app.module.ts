@@ -18,7 +18,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AccountProvider } from '../providers/account/account';
 import { HttpClientModule } from '@angular/common/http';
-import { OrderProvider } from '../providers/order/order';
 import { FcmProvider } from '../providers/fcm/fcm';
 
 import { Firebase } from '@ionic-native/firebase';
@@ -29,7 +28,6 @@ import { IonicStorageModule } from '@ionic/storage';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 
 import { IOrder } from '../IOrder';
-import { StatusProvider } from '../providers/status/status';
 import { BackendProvider } from '../providers/backend/backend';
 
 const firebaseConfifg = {
@@ -80,11 +78,9 @@ const firebaseConfifg = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AccountProvider,
-    OrderProvider,
     Firebase,
     FcmProvider,
     GlobalVarProvider,
-    StatusProvider,
     BackendProvider,
   ]
 })
