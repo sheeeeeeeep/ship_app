@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'Firebase';
 import { Storage } from '@ionic/storage';
 import { FcmProvider } from '../../providers/fcm/fcm';
+import { HttpClient } from '@angular/common/http';
+import {RequestOptions, Request, RequestMethod} from '@angular/http';
+// import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the NotifPage page.
@@ -20,9 +23,12 @@ import { FcmProvider } from '../../providers/fcm/fcm';
 
 export class NotifPage {
   shit = '';
-  public mynotif = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public fcm: FcmProvider) {
-
+  mynotif = {};
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public fcm: FcmProvider,private httpClient: HttpClient) {
+    var headers = new Headers();
+    this.headers.append('Content-Type', 'application/json' );
+    this.headers.append('Authorization', 'Bearer '+this.token);
+    let options = new RequestOptions({ headers: this.headers });
   }
   tt = [];
   title: string="通知";
@@ -31,13 +37,19 @@ export class NotifPage {
   // head = "被交換給 0216朱吉諾";
   // detail = "出港 / STOLT BASUTO / 1058 -> S1 / 16442";
 
-  ionViewWillEnter(){
+  token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxMTAwNTY4NDYyMywianRpIjoiMmQ0ZjhlNDQxMDJlNDU4NDg4YjNhODEyNjNjNTYxNzUiLCJ1c2VyX2lkIjoxNX0.vWKnpO82mhGHndjP3sLHO7GwqmLHUOOCAY3G3P1OzBQ';
+  headers:any;
 
-    this.storage.get('message').then((msg) => {
-      console.log(msg);
-      this.tt = msg;
+  options: any;
+  ionViewDidEnter(){
+    // this.storage.get('message').then((msg) => {
+    //   console.log(msg);
+    //   this.tt = msg;
+    //
+    // });
+    this.mynotif = this.httpClient.get('http://fleet-geode-218517.appspot.com/api/message',this.options);
+    console.log(this.mynotif);
 
-    });
   }
   clear(){
     this.storage.clear();
