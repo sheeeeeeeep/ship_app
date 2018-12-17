@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { FindPassPage } from '../pages/find-pass/find-pass';
 
 import { BoatPage } from '../pages/boat/boat';
 import { TimePage } from '../pages/time/time';
@@ -50,7 +51,8 @@ const firebaseConfifg = {
     TimePage,
     NewsPage,
     NotifPage,
-    SettingPage
+    SettingPage,
+    FindPassPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ const firebaseConfifg = {
     TimePage,
     NewsPage,
     NotifPage,
-    SettingPage
+    SettingPage,
+    FindPassPage
   ],
   providers: [
     StatusBar,

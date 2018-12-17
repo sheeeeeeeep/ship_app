@@ -10,6 +10,7 @@ import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
+import { FindPassPage } from '../pages/find-pass/find-pass';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
@@ -22,7 +23,7 @@ export class MyApp {
 
   public footerIsHidden: boolean = false;
   constructor(platform: Platform, public fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage) {
-    this.storage.get('message').then((msgs) => {
+    /*this.storage.get('message').then((msgs) => {
       if(!msgs){
         storage.ready().then(() => {
           this.storage.set('message',this.notifs);
@@ -82,7 +83,7 @@ export class MyApp {
 
       statusBar.styleDefault();
       splashScreen.hide();
-    });
+    });*/
 
     events.subscribe('hideHeader', (data)=>{
       this.footerIsHidden = data.isHidden;

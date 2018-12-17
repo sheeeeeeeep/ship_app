@@ -8,6 +8,7 @@ import { Events } from 'ionic-angular';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { BackendProvider } from '../../providers/backend/backend';
+import { FindPassPage } from '../find-pass/find-pass'
 
 
 @Component({
@@ -54,15 +55,13 @@ export class AboutPage {
   }*/
 
   goHome(){
-
-  // let url2 = "http://localhost:8100/api/api-token-auth/"
-
+// let url2 = "http://localhost:8100/api/api-token-auth/"
     this.backend.getToken(this.username, this.password)
       .subscribe(data => {
         this.gv.TOKEN = data['access'];
         //console.log(data.refresh);
         console.log(this.gv.TOKEN);
-        //this.navCtrl.push(TabsPage);
+        this.navCtrl.push(TabsPage);
 
       }, error => {
         console.log(error);
@@ -71,50 +70,8 @@ export class AboutPage {
       });
   }
 
-
-  getUser(){
-    let url =  "http://localhost:8100/api/api/user/bill01/";
-    let headers = { headers: new HttpHeaders({
-
-      "Content-Type": "application/json",
-      "Authorization": `JWT ${this.gv.TOKEN}` }) };
-
-
-     this.http.get(url,headers)
-       .subscribe(data => {
-
-         console.log(data);
-
-
-       }, error => {
-         console.log(error);
-       });
-
-  }
-
-  getOrder(){
-    let url =  "http://localhost:8100/api/api/status/";
-    let headers = { headers: new HttpHeaders({
-
-      "Content-Type": "application/json",
-      "Authorization": `JWT ${this.gv.TOKEN}` }) };
-
-
-     this.http.get(url,headers)
-       .subscribe(data => {
-
-         console.log(data);
-
-
-       }, error => {
-         console.log(error);
-       });
-
-  }
-
-  enter(){
-      this.navCtrl.push(TabsPage);
-
+  gofindPass(){
+    this.navCtrl.push(FindPassPage);
   }
 
 

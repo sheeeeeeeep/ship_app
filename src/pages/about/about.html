@@ -4,7 +4,7 @@
 
 
 <ion-content padding>
-  <h1 class="title" id="loginHead">登入</h1>
+  <h1 class="loginHead title">登入</h1>
 
   <p class="loginP">帳號</p>
   <ion-input type="text" class="box" [(ngModel)]="username"></ion-input>
@@ -19,19 +19,7 @@
     <p class="errorP">密碼錯誤</p>
   </div>
 
-  <p id="forgetPass">忘記密碼</p>
+  <p id="forgetPass" (click)=gofindPass()>忘記密碼</p>
   <br>
   <button ion-button block (click)="goHome()">登入</button>
-  <br><br><br><br><br><br>
-  <button ion-button block (click)="getUser()">使用者</button>
-  <button ion-button block (click)="getOrder()">Order</button>
-  <button ion-button block (click)="enter()">進去</button>
-
-
-
-
-
-
-
-
 </ion-content>
