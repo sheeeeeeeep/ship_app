@@ -4,13 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FcmProvider } from '../providers/fcm/fcm';
+import { GlobalVarProvider } from '../providers/global-var/global-var';
 import { ToastController } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
-import { FindPassPage } from '../pages/find-pass/find-pass';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
@@ -18,18 +18,28 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AboutPage;
+  rootPage:any;
   notifs = [];
 
   public footerIsHidden: boolean = false;
-  constructor(platform: Platform, public fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage) {
-    /*this.storage.get('message').then((msgs) => {
-      if(!msgs){
-        storage.ready().then(() => {
-          this.storage.set('message',this.notifs);
-        });
+  constructor(platform: Platform, public fcm: FcmProvider, toastCtrl: ToastController, statusBar: StatusBar, splashScreen: SplashScreen, events: Events,public storage: Storage,public gv: GlobalVarProvider) {
+    storage.get('token').then((tok) => {
+      console.log(tok);
+      if (tok){
+        this.gv.TOKEN = tok;
+        this.rootPage = TabsPage;
+      }
+      else{
+        this.rootPage = AboutPage;
       }
     });
+    // this.storage.get('message').then((msgs) => {
+    //   if(!msgs){
+    //     storage.ready().then(() => {
+    //       this.storage.set('message',this.notifs);
+    //     });
+    //   }
+    // });
     platform.ready().then(() => {
       fcm.getToken();
       // fcm.subscribeToTopic('gino');
@@ -83,7 +93,7 @@ export class MyApp {
 
       statusBar.styleDefault();
       splashScreen.hide();
-    });*/
+    });
 
     events.subscribe('hideHeader', (data)=>{
       this.footerIsHidden = data.isHidden;
