@@ -1,8 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IOrder } from '../../IOrder';
-import { IStatus } from '../../IOrder';
-import { Token } from '../../IOrder';
+import { IOrder, IStatus, INotif, Token } from '../../Interface';
 import { Observable} from 'rxjs/Observable';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
@@ -46,18 +44,20 @@ export class BackendProvider {
 
   getOrder(): Observable<IOrder[]>{
     let url2 = this.url + "api/order/";
-    // var res: Observable<IOrder[]>(;
     var res = this.http.get<IOrder[]>(url2, this.headers());
     return res;
   }
 
   getStatus(): Observable<IStatus[]>{
     let url2 = this.url + "api/status/";
-    // var res = Observable<IStatus[]> ;
     var res = this.http.get<IStatus[]>(url2, this.headers());
     return res;
   }
 
-
+  getNotif(): Observable<INotif[]>{
+    let url2 = this.url + "api/message/";
+    var res = this.http.get<INotif[]>(url2, this.headers());
+    return res;
+  }
 
 }

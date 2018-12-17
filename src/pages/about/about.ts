@@ -6,7 +6,6 @@ import { AccountProvider } from '../../providers/account/account';
 import { HttpClientModule } from '@angular/common/http';
 import { Events } from 'ionic-angular';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { IOrder } from '../../IOrder';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { BackendProvider } from '../../providers/backend/backend';
 

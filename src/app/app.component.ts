@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { FcmProvider } from '../providers/fcm/fcm';
-import { GlobalVars } from '../providers/globalvars/globalvars'
 import { ToastController } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
@@ -18,7 +17,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = AboutPage;
   notifs = [];
 
   public footerIsHidden: boolean = false;
@@ -80,7 +79,7 @@ export class MyApp {
       //     });
       //   });
       // });
-      
+
       statusBar.styleDefault();
       splashScreen.hide();
     });

@@ -16,3 +16,10 @@ export interface IStatus{
   night_shift: number;
   ship: string;
 }
+
+export interface INotif{
+  time: string;
+  ship: string;
+  head: string;
+  detail: string;
+}
