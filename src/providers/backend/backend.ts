@@ -35,7 +35,7 @@ export class BackendProvider {
 
   }
 
-  headers(){
+  private headers(){
     let header = { headers: new HttpHeaders({
      "Content-Type": "application/json",
      "Authorization": `Bearer ${this.gv.TOKEN}` }) };
@@ -55,7 +55,8 @@ export class BackendProvider {
   }
 
   getNotif(): Observable<INotif[]>{
-    let url2 = this.url + "api/message/";
+    let me = "";
+    let url2 = this.url + "api/message/" + me;
     var res = this.http.get<INotif[]>(url2, this.headers());
     return res;
   }
