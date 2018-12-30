@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 import { ToastController } from 'ionic-angular';
-import { Subject } from 'rxjs/Subject';
+// import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';

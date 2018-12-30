@@ -28,7 +28,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicStorageModule } from '@ionic/storage';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 
-import { IStatus, IOrder, INotif, Token } from '../Interface';
+// import { IStatus, IOrder, INotif, Token } from '../Interface';
 import { BackendProvider } from '../providers/backend/backend';
 
 const firebaseConfifg = {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AboutPage } from '../about/about';
+// import { AboutPage } from '../about/about';
 import { Events } from 'ionic-angular';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { Storage } from '@ionic/storage';

@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import * as firebase from 'Firebase';
+// import * as firebase from 'Firebase';
 import { Storage } from '@ionic/storage';
 import { FcmProvider } from '../../providers/fcm/fcm';
-import { HttpClient } from '@angular/common/http';
-import {RequestOptions, Request, RequestMethod} from '@angular/http';
-import { INotif } from '../../Interface';
+// import { HttpClient } from '@angular/common/http';
+// import {RequestOptions, Request, RequestMethod} from '@angular/http';
+// import { INotif } from '../../Interface';
 import { BackendProvider } from '../../providers/backend/backend';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
+// import { NewsPage } from '../news/news';
+
 
 /**
  * Generated class for the NotifPage page.
@@ -26,7 +28,7 @@ import { Observable } from 'rxjs/Observable';
 export class NotifPage {
   shit = '';
   notifs = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public fcm: FcmProvider,private httpClient: HttpClient, public backend: BackendProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public fcm: FcmProvider, public backend: BackendProvider) {
 
   }
   tt = [];
@@ -56,5 +58,8 @@ export class NotifPage {
   subB(){
     this.fcm.unsubscribeFromTopic('A');
     this.fcm.subscribeToTopic('B');
+  }
+  goNews(){
+    this.navCtrl.parent.select(2);
   }
 }

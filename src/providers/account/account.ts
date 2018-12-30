@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Account } from '../../Account';
-import { IAccount } from '../../IAccount';
+// import { IAccount } from '../../IAccount';
 import { Observable} from 'rxjs/Observable';
 /*
   Generated class for the AccountProvider provider.

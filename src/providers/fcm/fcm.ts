@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Firebase } from '@ionic-native/firebase';
 import { Platform } from 'ionic-angular';
@@ -26,13 +26,13 @@ export class FcmProvider {
 
     if (this.platform.is('android')) {
       token = await this.firebaseNative.getToken()
-    } 
+    }
 
     if (this.platform.is('ios')) {
       token = await this.firebaseNative.getToken();
       await this.firebaseNative.grantPermission();
-    } 
-    
+    }
+
     return this.saveTokenToFirestore(token);
   }
 
@@ -42,7 +42,7 @@ export class FcmProvider {
 
     const devicesRef = this.afs.collection('devices');
 
-    const docData = { 
+    const docData = {
       token,
       userId: 'testUser',
     };
@@ -60,4 +60,3 @@ export class FcmProvider {
   listenToNotifications() {return this.firebaseNative.onNotificationOpen();}
 
 }
-

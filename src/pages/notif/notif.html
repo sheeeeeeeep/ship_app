@@ -15,10 +15,10 @@
 
 
 <ion-content padding >
-  <button ion-button (click)="subA()">A</button>
-  <button ion-button (click)="subB()">B</button>
-  <button ion-button (click)="clear()">clear</button>
-  <ion-card *ngFor="let noti of notifs">
+  <!-- <button ion-button (click)="subA()">A</button> -->
+  <!-- <button ion-button (click)="subB()">B</button> -->
+  <!-- <button ion-button (click)="clear()">clear</button> -->
+  <ion-card *ngFor="let noti of notifs" (click)="goNews()">
     <ion-card-header class="cardHead notiHead">
       <span style="color: black">{{noti.time}}</span>
       <br><span class="dot_orange"></span>
