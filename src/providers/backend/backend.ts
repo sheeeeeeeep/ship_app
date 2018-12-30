@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IOrder, IStatus, INotif, Token } from '../../Interface';
+import { IOrder, IStatus, INotif, IUser,Token } from '../../Interface';
 import { Observable} from 'rxjs/Observable';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
@@ -14,10 +14,11 @@ import { GlobalVarProvider } from '../../providers/global-var/global-var';
 export class BackendProvider {
 
   constructor(public http: HttpClient,  public gv: GlobalVarProvider) {
-    console.log('Hello BackendProvider Provider');
+    // console.log('Hello BackendProvider Provider');
   }
 
     private url: string = "https://fleet-geode-218517.appspot.com/";
+
 
   getToken(username: string, password: string){
     let url2 = this.url + "api/token/";
@@ -31,8 +32,13 @@ export class BackendProvider {
      }) };
     // var res: Observable<Token[]>;
     var res = this.http.post<Token[]>(url2, JSON.stringify(postParams),headers);
-    return res
+    return res;
+  }
 
+  getUser(username: string){
+    let url2 = this.url + "api/user/" + username;
+    var res = this.http.get<IUser[]>(url2, this.headers());
+    return res;
   }
 
   private headers(){

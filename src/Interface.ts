@@ -9,6 +9,13 @@ export interface Token{
   refresh: string;
 }
 
+export interface IUser{
+  auth: string;
+  user_id: number;
+  username: string;
+  // real_name: string;
+}
+
 export interface IStatus{
   my_name: string;
   my_pilot_id: string;

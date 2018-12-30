@@ -21,7 +21,7 @@
       </ion-item>
       <ion-item>
         <ion-label>是否開啟推播通知   </ion-label>
-        <ion-toggle [(ngModel)]="isPush"></ion-toggle>
+        <ion-toggle [(ngModel)]="isPush" (ionChange)="ifPush();"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>更換密碼</ion-label>
