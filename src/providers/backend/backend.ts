@@ -1,27 +1,18 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IOrder, IStatus, INotif, IUser,Token } from '../../Interface';
-import { Observable} from 'rxjs/Observable';
+import { IOrder, IStatus, INotif, IAuth } from '../../Interface';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
-/*
-  Generated class for the BackendProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class BackendProvider {
 
   constructor(public http: HttpClient,  public gv: GlobalVarProvider) {
-    // console.log('Hello BackendProvider Provider');
   }
 
     private url: string = "https://fleet-geode-218517.appspot.com/";
 
-
-  getToken(username: string, password: string){
-    let url2 = this.url + "api/token/";
+  getAuth(username: string, password: string){
+    let url2 = this.url + "authenticate/pilot/";
     let postParams =  {
       "username": username,
       "password": password,
@@ -30,14 +21,7 @@ export class BackendProvider {
       "Content-Type": "application/json",
 
      }) };
-    // var res: Observable<Token[]>;
-    var res = this.http.post<Token[]>(url2, JSON.stringify(postParams),headers);
-    return res;
-  }
-
-  getUser(username: string){
-    let url2 = this.url + "api/user/" + username;
-    var res = this.http.get<IUser[]>(url2, this.headers());
+    var res = this.http.post<IAuth[]>(url2, JSON.stringify(postParams),headers);
     return res;
   }
 
@@ -48,21 +32,20 @@ export class BackendProvider {
     return header;
   }
 
-  getOrder(): Observable<IOrder[]>{
+  getOrder(){
     let url2 = this.url + "api/order/";
     var res = this.http.get<IOrder[]>(url2, this.headers());
     return res;
   }
 
-  getStatus(): Observable<IStatus[]>{
+  getStatus(){
     let url2 = this.url + "api/status/";
     var res = this.http.get<IStatus[]>(url2, this.headers());
     return res;
   }
 
-  getNotif(): Observable<INotif[]>{
-    let me = "";
-    let url2 = this.url + "api/message/" + me;
+  getNotif(){
+    let url2 = this.url + "api/message/";
     var res = this.http.get<INotif[]>(url2, this.headers());
     return res;
   }

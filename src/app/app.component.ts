@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FcmProvider } from '../providers/fcm/fcm';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 import { ToastController } from 'ionic-angular';
-// import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -33,63 +32,10 @@ export class MyApp {
         this.rootPage = AboutPage;
       }
     });
-    // this.storage.get('message').then((msgs) => {
-    //   if(!msgs){
-    //     storage.ready().then(() => {
-    //       this.storage.set('message',this.notifs);
-    //     });
-    //   }
-    // });
+
     platform.ready().then(() => {
       fcm.getToken();
-      // fcm.subscribeToTopic('gino');
-      fcm.listenToNotifications().pipe(
-        tap(msg => {
-          // show a toast
-            if(msg.wasTapped){
-              console.log("Received in background");
-            } else {
-              console.log("Received in foreground");
-                let toast = toastCtrl.create({
-                message: msg.body,
-                duration: 3000,
-                position: 'top',
-                cssClass: "toast-message",
-              });
-              toast.onDidDismiss(() => {
-                console.log('Dismissed toast');
-              });
-
-              toast.present();
-              this.storage.get('message').then((msgs) => {
-                this.notifs = msgs;
-                this.notifs.push(msg);
-                this.storage.ready().then(() => {
-                  this.storage.set('message', this.notifs);
-                });
-            });
-
-            };
-            // this.storage.get('message').then((msgs) => {
-            //   this.notifs = msgs;
-            //   this.notifs.push(msg);
-            //   this.storage.ready().then(() => {
-            //     this.storage.set('message', this.notifs);
-            //   });
-            // });
-        })
-      )
-      .subscribe()
-
-      //   fcm.listenToNotifications().subscribe(data =>{
-      //     this.storage.get('message').then((msgs) => {
-      //     this.notifs = msgs;
-      //     this.notifs.push(data);
-      //     this.storage.ready().then(() => {
-      //       this.storage.set('message', this.notifs);
-      //     });
-      //   });
-      // });
+      fcm.listenToNotifications().pipe(tap(msg => {})).subscribe();
 
       statusBar.styleDefault();
       splashScreen.hide();

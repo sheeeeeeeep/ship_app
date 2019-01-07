@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { AboutPage } from '../about/about';
 import { Events } from 'ionic-angular';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { Storage } from '@ionic/storage';
@@ -29,7 +28,6 @@ export class SettingPage {
   version = "94.87.m0354";
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad SettingPage');
   }
 
   logout(){
@@ -42,7 +40,6 @@ export class SettingPage {
       });
   }
   ifPush(){
-    // console.log(this.isPush);
     this.storage.ready().then(() => {
       this.storage.set('push',this.isPush);
       if(this.isPush == true){
@@ -51,6 +48,5 @@ export class SettingPage {
         this.fcm.unsubscribeFromTopic(String(this.gv.UID));
       }
     });
-
   }
 }

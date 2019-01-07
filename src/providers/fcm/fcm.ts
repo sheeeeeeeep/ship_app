@@ -4,22 +4,12 @@ import { Firebase } from '@ionic-native/firebase';
 import { Platform } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-/*
-  Generated class for the FcmProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class FcmProvider {
 
-  constructor(
-    public firebaseNative: Firebase,
-    public afs: AngularFirestore,
-    private platform: Platform
-  ) {}
+  constructor( public firebaseNative: Firebase, public afs: AngularFirestore, private platform: Platform){
+  }
 
-  // Get permission from the user
   async getToken() {
 
     let token;
@@ -36,7 +26,6 @@ export class FcmProvider {
     return this.saveTokenToFirestore(token);
   }
 
-  // Save the token to firestore
   private saveTokenToFirestore(token) {
     if (!token) return;
 
@@ -56,7 +45,6 @@ export class FcmProvider {
   unsubscribeFromTopic(topic){
     this.firebaseNative.unsubscribe(topic);
   }
-  // Listen to incoming FCM messages
-  listenToNotifications() {return this.firebaseNative.onNotificationOpen();}
 
+  listenToNotifications() {return this.firebaseNative.onNotificationOpen();}
 }
