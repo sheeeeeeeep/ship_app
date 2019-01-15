@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Events } from 'ionic-angular';
+import { AboutPage } from '../about/about';
+import { SmsPage } from '../sms/sms';
 
 /**
  * Generated class for the FindPassPage page.
@@ -15,11 +18,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FindPassPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {
+    events.publish('hideHeader', {isHidden: true});
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FindPassPage');
+  }
+
+  phone: string;
+
+  sendPhone(){
+    this.navCtrl.push(SmsPage);
+  }
+
+  backLogin(){
+    this.navCtrl.pop();
   }
 
 }

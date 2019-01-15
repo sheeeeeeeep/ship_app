@@ -4,6 +4,7 @@ import { AboutPage } from '../about/about';
 import { Events } from 'ionic-angular';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 import { Storage } from '@ionic/storage';
+import { ChangePassPage } from '../change-pass/change-pass';
 
 @IonicPage()
 @Component({
@@ -35,4 +36,9 @@ export class SettingPage {
       });
       // window.location.reload();
   }
+
+  goChangePass(){
+    this.navCtrl.push(ChangePassPage);
+  }
+
 }

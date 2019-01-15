@@ -6,13 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>findPass</ion-title>
-  </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <h1 class="loginHead title">找回密碼</h1>
+  <p class="loginP">請輸入<span class="mark">手機號碼</span><br>
+  我們將傳送簡訊驗證碼</p>
+  <ion-input type="text" class="box marginBox" [(ngModel)]="phone"></ion-input>
+  <button ion-button block (click)="sendPhone()">送出</button>
+  <p class="loginP or">或是</p>
+  <button ion-button block (click)="backLogin()" class="lButton">返回登入畫面</button>
 
 </ion-content>

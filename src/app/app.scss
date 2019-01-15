@@ -106,6 +106,40 @@
 }
 
 
+.loginP {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.errorP {
+  font-size: 18px;
+  color: #FA1919;
+  margin-top: 10px;
+}
+
+.box {
+  border: 1px solid #BEBABA;
+  background: #FFFFFF;
+}
+
+.or{
+  text-align: center;
+}
+
+.marginBox{
+  margin-bottom: 28%
+}
+
+.lButton{
+  background-color: white;
+  color: black;
+  border: 1px solid map-get($colors, _blue);
+}
+
+ion-header ion-icon.back-button-icon.icon {
+    color: white;
+}
+
 
 
 	a.tab-button[aria-selected=true]:nth-of-type(1) {
