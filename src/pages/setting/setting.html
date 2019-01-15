@@ -1,9 +1,3 @@
-<!--
-  Generated template for the SettingPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -11,7 +5,6 @@
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content padding>
   <div class="setting">
@@ -21,7 +14,7 @@
       </ion-item>
       <ion-item>
         <ion-label>是否開啟推播通知   </ion-label>
-        <ion-toggle [(ngModel)]="isPush"></ion-toggle>
+        <ion-toggle [(ngModel)]="isPush" (ionChange)="ifPush();"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label (click)=goChangePass()>更換密碼</ion-label>
@@ -34,7 +27,5 @@
       </ion-item>
     </ion-list>
   </div>
-
-
 
 </ion-content>

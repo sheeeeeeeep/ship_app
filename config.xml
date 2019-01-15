@@ -41,8 +41,11 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <access origin="*" />
+        <allow-navigation href="http://*sdci.khb.gov.tw*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
@@ -86,4 +89,5 @@
     <plugin name="cordova-sqlite-storage" spec="2.5.2" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.2" />
     <engine name="android" spec="7.1.4" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

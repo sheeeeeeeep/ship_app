@@ -4,9 +4,11 @@ export interface IOrder{
   my_created: string;
 }
 
-export interface Token{
-  access: string;
-  refresh: string;
+export interface IAuth{
+    "token": string;
+    "username": string;
+    "name": string;
+    "pilot_id": number;
 }
 
 export interface IStatus{
@@ -22,4 +24,14 @@ export interface INotif{
   ship: string;
   head: string;
   detail: string;
+}
+
+export class Account{
+  username: string;
+  password: string;
+}
+
+export interface IAccount{
+  username: string;
+  password: string;
 }
