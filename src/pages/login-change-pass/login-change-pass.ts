@@ -6,6 +6,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { BackendProvider } from '../../providers/backend/backend';
 import { TabsPage } from '../tabs/tabs';
 
+
 /**
  * Generated class for the LoginChangePassPage page.
  *
@@ -35,8 +36,17 @@ export class LoginChangePassPage {
     if(this.password != this.passB){
       this.isWrongEnter = true;
     }else{
-      this.backend.changePass(this.password);
-      this.navCtrl.push(TabsPage);
+      this.backend.changePass(this.password)
+        .subscribe(data => {
+          this.navCtrl.push(TabsPage);
+
+        }, error =>{
+          console.log(error);
+          this.isWrongEnter = true;
+          this.navCtrl.push(TabsPage);
+
+         });
+
 
     }
   }

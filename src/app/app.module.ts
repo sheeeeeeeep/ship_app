@@ -19,6 +19,10 @@ import { TimePage } from '../pages/time/time';
 import { NewsPage } from '../pages/news/news';
 import { NotifPage } from '../pages/notif/notif';
 import { SettingPage } from '../pages/setting/setting';
+import { SmsPage } from '../pages/sms/sms';
+import { LoginChangePassPage } from '../pages/login-change-pass/login-change-pass'
+import { ChangePassPage } from '../pages/change-pass/change-pass'
+
 
 import { BoatPageModule } from '../pages/boat/boat.module';
 import { FindPassPageModule } from '../pages/find-pass/find-pass.module';
@@ -26,6 +30,10 @@ import { NewsPageModule } from '../pages/news/news.module';
 import { NotifPageModule } from '../pages/notif/notif.module';
 import { SettingPageModule } from '../pages/setting/setting.module';
 import { TimePageModule } from '../pages/time/time.module';
+import { SmsPageModule } from '../pages/sms/sms.module';
+import { LoginChangePassPageModule } from '../pages/login-change-pass/login-change-pass.module'
+import { ChangePassPageModule } from '../pages/change-pass/change-pass.module'
+
 
 
 import { FcmProvider } from '../providers/fcm/fcm';
@@ -60,6 +68,9 @@ const firebaseConfifg = {
     NotifPageModule,
     SettingPageModule,
     TimePageModule,
+    SmsPageModule,
+    LoginChangePassPageModule,
+    ChangePassPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -72,6 +83,9 @@ const firebaseConfifg = {
     NotifPage,
     SettingPage,
     FindPassPage,
+    SmsPage,
+    LoginChangePassPage,
+    ChangePassPage
   ],
   providers: [
     StatusBar,

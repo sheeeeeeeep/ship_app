@@ -50,4 +50,32 @@ export class BackendProvider {
     return res;
   }
 
+  changePass(password: string){
+    let url2 = this.url + "reset_pilot/";
+    let postParams =  [{
+      "password": password,
+    }]
+    var res = this.http.post(url2, JSON.stringify(postParams), this.headers());
+    return res;
+  }
+
+  sendPhone(phone: string){
+    let url2 = this.url + "";
+    let postParams =  [{
+      "": phone,
+    }]
+    var res = this.http.post(url2, JSON.stringify(postParams), );
+    return res;
+  }
+
+  smsVerify(sms: string){
+    let url2 = this.url + "";
+    let postParams =  [{
+      "": sms,
+    }]
+    var res = this.http.post(url2, JSON.stringify(postParams), );
+    return res;
+  }
+
+
 }

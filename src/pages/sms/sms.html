@@ -11,8 +11,11 @@
 
 <ion-content padding>
   <h1 class="loginHead title">請輸入簡訊驗證碼</h1>
-  <ion-input type="text" class="box marginBox" [(ngModel)]="sms"></ion-input>
-  <button ion-button block (click)="sendSms()">送出</button>
+  <ion-input type="text" class="box" [(ngModel)]="sms"></ion-input>
+  <div *ngIf="isWrong==true">
+    <p class="errorP">輸入錯誤</p>
+  </div>
+  <button ion-button block (click)="sendSms()" class="marginBox">送出</button>
   <p class="loginP or">或是</p>
   <button ion-button block (click)="backFind()" class="lButton">重新輸入手機</button>
 

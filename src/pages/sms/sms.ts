@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { FindPassPage } from '../find-pass/find-pass';
 import { LoginChangePassPage } from '../login-change-pass/login-change-pass'
+import { BackendProvider } from '../../providers/backend/backend';
 
 /**
  * Generated class for the SmsPage page.
@@ -18,7 +19,7 @@ import { LoginChangePassPage } from '../login-change-pass/login-change-pass'
 })
 export class SmsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public backend:BackendProvider) {
   }
 
   ionViewDidLoad() {
@@ -28,7 +29,16 @@ export class SmsPage {
   sms: string;
 
   sendSms(){
-    this.navCtrl.push(LoginChangePassPage);
+    this.backend.smsVerify(this.sms)
+      .subscribe(data => {
+        this.navCtrl.push(LoginChangePassPage);
+
+      }, error =>{
+        console.log(error);
+        this.isWrong = true;
+        this.navCtrl.push(LoginChangePassPage);
+      });
+
   }
 
   backFind(){

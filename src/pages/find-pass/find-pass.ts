@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { SmsPage } from '../sms/sms';
+import { BackendProvider } from '../../providers/backend/backend';
+
 
 /**
  * Generated class for the FindPassPage page.
@@ -18,7 +20,7 @@ import { SmsPage } from '../sms/sms';
 })
 export class FindPassPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, public backend:BackendProvider) {
     events.publish('hideHeader', {isHidden: true});
   }
 
@@ -27,9 +29,19 @@ export class FindPassPage {
   }
 
   phone: string;
+  isWrong: boolean = false;
 
   sendPhone(){
-    this.navCtrl.push(SmsPage);
+    this.backend.sendPhone(this.phone)
+      .subscribe(data => {
+        this.navCtrl.push(SmsPage);
+
+      }, error =>{
+        console.log(error);
+        this.isWrong = true;
+        this.navCtrl.push(SmsPage);
+      });
+
   }
 
   backLogin(){

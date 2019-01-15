@@ -35,12 +35,12 @@ export class AboutPage {
         this.gv.NAME = data['name'];
         this.gv.UID = data['pilot_id'];
 
-        this.storage.ready().then(() => {
+        /*this.storage.ready().then(() => {
           this.storage.set('token', data['token']);
           this.storage.set('name', data['name']);
           this.storage.set('id', data['pilot_id']);
           this.storage.set('push', true);
-          this.fcm.subscribeToTopic(String(data['pilot_id']));
+          this.fcm.subscribeToTopic(String(data['pilot_id']));*/
           this.navCtrl.push(TabsPage);
         });
 

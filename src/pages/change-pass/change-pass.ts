@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BackendProvider } from '../../providers/backend/backend';
+import { SettingPage } from '../setting/setting';
 
 /**
  * Generated class for the ChangePassPage page.
@@ -39,10 +40,11 @@ export class ChangePassPage {
     }else{
       this.backend.changePass(this.password)
         .subscribe(data => {
-          console.log(data);
+          this.navCtrl.pop();
 
         }, error =>{
           console.log(error);
+          this.isWrongEnter = true;
         });
 
     }
