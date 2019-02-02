@@ -15,7 +15,7 @@ import { ChangePassPage } from '../change-pass/change-pass';
 export class SettingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events,public gv: GlobalVarProvider,public storage: Storage,public fcm: FcmProvider) {
-    this.name = this.gv.NAME;
+    this.name = this.gv.LNAME + this.gv.FNAME;
     this.id = String(this.gv.UID);
     storage.get('push').then((push) => {
       console.log(push);
@@ -27,7 +27,7 @@ export class SettingPage {
   id:string;
   name:string;
   isPush: boolean;
-  version = "94.87.m0354";
+  version = "1.0.0";
 
   ionViewDidLoad() {
   }

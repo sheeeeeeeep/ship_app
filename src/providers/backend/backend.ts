@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IOrder, IStatus, INotif, IAuth } from '../../Interface';
+import { IOrder, IStatus, INotif, IAuth, IAppcal, IChange } from '../../Interface';
 import { GlobalVarProvider } from '../../providers/global-var/global-var';
 
 @Injectable()
@@ -9,7 +9,8 @@ export class BackendProvider {
   constructor(public http: HttpClient,  public gv: GlobalVarProvider) {
   }
 
-    private url: string = "https://fleet-geode-218517.appspot.com/";
+    private url: string = "https://certain-purpose-228904.appspot.com/";
+    // private url: string = "http://192.168.1.123:8000/";
 
   getAuth(username: string, password: string){
     let url2 = this.url + "authenticate/pilot/";
@@ -25,10 +26,10 @@ export class BackendProvider {
     return res;
   }
 
-  private headers(){
+  headers(){
     let header = { headers: new HttpHeaders({
      "Content-Type": "application/json",
-     "Authorization": `Bearer ${this.gv.TOKEN}` }) };
+     "Authorization": `token ${this.gv.TOKEN}` }) };
     return header;
   }
 
@@ -41,6 +42,21 @@ export class BackendProvider {
   getStatus(){
     let url2 = this.url + "api/status/";
     var res = this.http.get<IStatus[]>(url2, this.headers());
+    return res;
+  }
+
+  getAppcal(){
+    let url2 = this.url + "api/appcal/" + this.gv.UID.toString() + "/";
+    var res = this.http.get<IAppcal>(url2, { headers: new HttpHeaders({
+                                                  "Content-Type": "application/json",
+                                                  "Authorization": `token ${this.gv.TOKEN}` })
+                                             });
+    return res;
+  }
+
+  getChanges(){
+    let url2 = this.url + "api/app_conti/";
+    var res = this.http.get<IChange[]>(url2, this.headers());
     return res;
   }
 
@@ -60,22 +76,11 @@ export class BackendProvider {
   }
 
   sendPhone(phone: string){
-    let url2 = this.url + "";
+    let url2 = this.url + "mobile/pilot/";
     let postParams =  [{
-      "": phone,
+      "mobile": phone,
     }]
     var res = this.http.post(url2, JSON.stringify(postParams), );
     return res;
   }
-
-  smsVerify(sms: string){
-    let url2 = this.url + "";
-    let postParams =  [{
-      "": sms,
-    }]
-    var res = this.http.post(url2, JSON.stringify(postParams), );
-    return res;
-  }
-
-
 }

@@ -26,6 +26,16 @@ export class MyApp {
       console.log(tok);
       if (tok){
         this.gv.TOKEN = tok;
+        storage.get('last_name').then((ln) => {
+          this.gv.LNAME = ln;
+          storage.get('first_name').then((fn) => {
+            this.gv.FNAME = fn;
+            storage.get('id').then((id) => {
+              this.gv.UID = id;
+              
+            });
+          });
+        });
         this.rootPage = TabsPage;
       }
       else{

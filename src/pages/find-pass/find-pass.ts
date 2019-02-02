@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { AboutPage } from '../about/about';
-import { SmsPage } from '../sms/sms';
+// import { SmsPage } from '../sms/sms';
 import { BackendProvider } from '../../providers/backend/backend';
 
 
@@ -34,12 +34,11 @@ export class FindPassPage {
   sendPhone(){
     this.backend.sendPhone(this.phone)
       .subscribe(data => {
-        this.navCtrl.push(SmsPage);
+        this.navCtrl.push(AboutPage);
 
       }, error =>{
         console.log(error);
         this.isWrong = true;
-        this.navCtrl.push(SmsPage);
       });
 
   }
