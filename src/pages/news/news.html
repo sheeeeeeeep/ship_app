@@ -8,10 +8,21 @@
 
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="更新中">
+    </ion-refresher-content>
+  </ion-refresher>
+
+<div>
 
 <ion-scroll scrollX="true"scrollY="true" style="height: -webkit-fill-available;">
-  <iframe src="http://sdci.khb.gov.tw/sdci/UA1006-1.asp?First=T" style="height:250%; width:450%; border:0">
+  <iframe name="web" src="http://sdci.khb.gov.tw/sdci/UA1006-1.asp?First=T" style="height:250%; width:450%; border:0">
   </iframe>
 
 </ion-scroll>
+
+</div>
 </ion-content>

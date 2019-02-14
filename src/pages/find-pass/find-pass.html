@@ -13,7 +13,7 @@
   <h1 class="loginHead title">找回密碼</h1>
   <p class="loginP">請輸入<span class="mark">手機號碼</span><br>
   我們將傳送新的密碼</p>
-  <ion-input type="text" class="box" [(ngModel)]="phone"></ion-input>
+  <ion-input type="text" class="box" [(ngModel)]="phone" [ngClass]="inputBox" (ionFocus)="focus()" (ionBlur)="blur()"></ion-input>
   <div *ngIf="isWrong==true">
     <p class="errorP">輸入錯誤</p>
   </div>

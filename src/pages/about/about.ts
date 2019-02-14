@@ -27,33 +27,58 @@ export class AboutPage {
   password: string;
   isWrongUser: boolean = false;
   isWrongPass: boolean = false;
+  inputBox: string = "box";
+  inputBox2: string = "box";
 
   goHome(){
+    this.isWrongUser = false;
+    this.isWrongPass = false;
+
     this.backend.getAuth(this.username, this.password)
       .subscribe(data => {
-        this.gv.TOKEN = data['token'];
-        this.gv.FNAME = data['first_name'];
-        this.gv.LNAME = data['last_name'];
-        this.gv.UID = data['pilot_id'];
+        if(data['first_name']){
+          this.gv.TOKEN = data['token'];
+          this.gv.FNAME = data['first_name'];
+          this.gv.LNAME = data['last_name'];
+          this.gv.UID = data['pilot_id'];
 
-        this.storage.ready().then(() => {
-          this.storage.set('token', data['token']);
-          this.storage.set('first_name', data['first_name']);
-          this.storage.set('last_name', data['last_name']);
-          this.storage.set('id', data['pilot_id']);
-          this.storage.set('push', true);
-          this.fcm.subscribeToTopic(String(data['pilot_id']));
-          this.navCtrl.push(TabsPage);
-        });
+          this.storage.ready().then(() => {
+            this.storage.set('token', data['token']);
+            this.storage.set('first_name', data['first_name']);
+            this.storage.set('last_name', data['last_name']);
+            this.storage.set('id', data['pilot_id']);
+            this.storage.set('push', true);
+            this.fcm.subscribeToTopic(String(data['pilot_id']));
+            this.navCtrl.push(TabsPage);
+          });
+
+        }else{
+          this.isWrongUser = true;
+        }
 
       }, error => {
         console.log(error);
-        this.isWrongUser = true;
         this.isWrongPass = true;
       });
   }
 
   gofindPass(){
     this.navCtrl.push(FindPassPage);
+  }
+
+  focus(){
+    this.inputBox = "boxFocus";
+  }
+
+  blur(){
+    this.inputBox = "box";
+  }
+
+  focus2(){
+    this.inputBox2 = "boxFocus";
+  }
+
+  blur2(){
+    this.inputBox2 = "box";
   }
 }

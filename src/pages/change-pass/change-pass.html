@@ -15,9 +15,9 @@
 
 <ion-content padding>
   <p class="loginP">新密碼</p>
-  <ion-input type="text" class="box" [(ngModel)]="password"></ion-input><br>
+  <ion-input type="password" class="box" [(ngModel)]="password" [ngClass]="inputBox" (ionFocus)="focus()" (ionBlur)="blur()"></ion-input><br>
   <p class="loginP">再次輸入新密碼</p>
-  <ion-input type="text" class="box" [(ngModel)]="passB"></ion-input>
+  <ion-input type="password" class="box" [(ngModel)]="passB" [ngClass]="inputBox2" (ionFocus)="focus2()" (ionBlur)="blur2()"></ion-input>
   <div *ngIf="isWrongEnter==true">
     <p class="errorP">輸入錯誤</p>
   </div>

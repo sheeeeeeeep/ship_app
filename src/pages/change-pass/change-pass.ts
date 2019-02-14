@@ -23,6 +23,8 @@ export class ChangePassPage {
   password: string;
   passB: string;
   isWrongEnter: boolean = false;
+  inputBox: string = "box";
+  inputBox2: string = "box";
 
   sendPass(){
     if(this.password != this.passB){
@@ -38,6 +40,22 @@ export class ChangePassPage {
         });
 
     }
+  }
+
+  focus(){
+    this.inputBox = "boxFocus";
+  }
+
+  blur(){
+    this.inputBox = "box";
+  }
+
+  focus2(){
+    this.inputBox2 = "boxFocus";
+  }
+
+  blur2(){
+    this.inputBox2 = "box";
   }
 
 

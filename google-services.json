@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "511913116476",
-    "firebase_url": "https://ship-app-backend.firebaseio.com",
-    "project_id": "ship-app-backend",
-    "storage_bucket": "ship-app-backend.appspot.com"
+    "project_number": "1008402793657",
+    "firebase_url": "https://smart-port.firebaseio.com",
+    "project_id": "smart-port",
+    "storage_bucket": "smart-port.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:511913116476:android:20d2135824484495",
+        "mobilesdk_app_id": "1:1008402793657:android:20d2135824484495",
         "android_client_info": {
           "package_name": "com.app.ship"
         }
       },
       "oauth_client": [
         {
-          "client_id": "511913116476-5aoc50v1k0ovlgk48vj244qkjmkugdlh.apps.googleusercontent.com",
+          "client_id": "1008402793657-blooiff2j03p36k29o8rkgbpc9arfb7i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8uKfNndpAcWRFBJuYV4Xh9kI_eWyoWHA"
+          "current_key": "AIzaSyDdlAFxMP0kis8It9SKfAj2oKg45Ealxho"
         }
       ],
       "services": {

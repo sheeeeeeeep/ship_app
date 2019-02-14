@@ -30,8 +30,18 @@ export class FindPassPage {
 
   phone: string;
   isWrong: boolean = false;
+  inputBox: string = "box";
+
+  focus(){
+    this.inputBox = "boxFocus";
+  }
+
+  blur(){
+    this.inputBox = "box";
+  }
 
   sendPhone(){
+    this.isWrong = false;
     this.backend.sendPhone(this.phone)
       .subscribe(data => {
         this.navCtrl.push(AboutPage);

@@ -47,7 +47,8 @@ export class MyApp {
       fcm.getToken();
       fcm.listenToNotifications().pipe(tap(msg => {})).subscribe();
 
-      statusBar.styleDefault();
+      statusBar.overlaysWebView(true);
+      statusBar.backgroundColorByHexString('#3A5786');
       splashScreen.hide();
     });
 

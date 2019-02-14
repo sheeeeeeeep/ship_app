@@ -16,11 +16,20 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="更新中">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <div [ngSwitch] = "subPage">
     <div *ngSwitchCase="'time'">
       <ion-card>
         <ion-card-header class="cardHead">
-          單趟累積連續總工時:<br> {{accumulateWorkTime_h}}時{{accumulateWorkTime_m}}分
+          單趟累積連續總工時<br><span class="centerH"> <span class="big">{{accumulateWorkTime_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;
+          <span class="big">{{accumulateWorkTime_m}}</span>&nbsp;&nbsp;分鐘</span>
         </ion-card-header>
 
         <ion-card-content>
@@ -33,17 +42,28 @@
         <ion-card-header class="cardHead">
           個人每月平均日工時
         </ion-card-header>
-
         <ion-card-content>
           <ion-select [(ngModel)]="date_person" multiple="false" class="myTime">
             <ion-option value="new">這個月</ion-option>
             <ion-option value="old">上個月</ion-option>
           </ion-select>
-          <span style="font-size: 20px" *ngIf="date_person == 'new'">白天班：{{new_person_day_h}}時{{new_person_day_m}}分</span>
-          <span style="font-size: 20px" *ngIf="date_person == 'old'">白天班：{{old_person_day_h}}時{{old_person_day_m}}分</span>
+          <span style="font-size: 20px" *ngIf="date_person == 'new'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{new_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'old'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{old_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
           <br><br>
-          <span style="font-size: 20px" *ngIf="date_person == 'new'">大夜班：{{new_person_night_h}}時{{new_person_night_m}}分</span>
-          <span style="font-size: 20px" *ngIf="date_person == 'old'">大夜班：{{old_person_night_h}}時{{old_person_night_m}}分</span>
+          <span style="font-size: 20px" *ngIf="date_person == 'new'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{new_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'old'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{old_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
         </ion-card-content>
       </ion-card>
 
@@ -51,37 +71,71 @@
         <ion-card-header class="cardHead">
           連續帶船組內平均日工時
         </ion-card-header>
-
         <ion-card-content>
           <ion-select [(ngModel)]="date_group" multiple="false" class="myTime">
             <ion-option value="neww">這個月</ion-option>
             <ion-option value="oldd">上個月</ion-option>
           </ion-select>
-          <span style="font-size: 20px" *ngIf="date_group == 'neww'">白天班：{{new_group_day_h}}時{{new_group_day_m}}分</span>
-          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">白天班：{{old_group_day_h}}時{{old_group_day_m}}分</span>
+          <span style="font-size: 20px" *ngIf="date_group == 'neww'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{new_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{old_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
           <br><br>
-          <span style="font-size: 20px" *ngIf="date_group == 'neww'">大夜班：{{new_group_night_h}}時{{new_group_night_m}}分</span>
-          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">大夜班：{{old_group_night_h}}時{{old_group_night_m}}分</span>
+          <span style="font-size: 20px" *ngIf="date_group == 'neww'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{new_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{old_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
         </ion-card-content>
       </ion-card>
     </div>
 
     <ion-scroll scrollX="true" class="horizonScroll" *ngSwitchCase="'record'">
+      <p class="dateP">{{date1}}</p>
       <ion-grid class="z-depth-2" style="width: 150%">
-        <ion-row style="text-align: right, font-text: 18px">{{date1}}</ion-row>
         <ion-row nowrap class="row-header">
-          <ion-col col-2>發生時間</ion-col>
-          <ion-col col-2 style="font-size: 13px">連續帶船引水人</ion-col>
-          <ion-col col-2 style="font-size: 13px">連續休息引水人</ion-col>
-          <ion-col col-6>船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
+          <ion-col col-2 class="time">發生<br>時間</ion-col>
+          <ion-col col-3 class="people">連續帶船<br>引水人</ion-col>
+          <ion-col col-3 class="people">連續休息<br>引水人</ion-col>
+          <ion-col col-6 class="ship">船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
         </ion-row>
         <ion-row nowrap *ngFor="let change of changes">
-          <ion-col col-2>{{change.occur_time}}</ion-col>
-          <ion-col col-2 style="font-size: 12px">{{change.pilot_work.pilot_id}}{{change.pilot_work.name}}</ion-col>
-          <ion-col col-2 style="font-size: 12px">{{change.pilot_wait.pilot_id}}{{change.pilot_wait.name}}</ion-col>
-          <ion-col col-6 *ngIf="change.SP_STS=='I'">{{change.SP_STS}}/{{change.SP_ENAME}}/<br>S{{change.SP_INPORT}}->{{change.SP_PORTPLACE}}/{{change.SP_TOTDUN}}</ion-col>
-          <ion-col col-6 *ngIf="change.SP_STS=='O'">{{change.SP_STS}}/{{change.SP_ENAME}}/<br>{{change.SP_PORTPLACE}}->S{{change.SP_INPORT}}/{{change.SP_TOTDUN}}</ion-col>
-          <ion-col col-6 *ngIf="change.SP_STS=='T'">{{change.SP_STS}}/{{change.SP_ENAME}}/<br>{{change.SP_PORTFROM}}->{{change.SP_PORTPLACE}}/{{change.SP_TOTDUN}}</ion-col>
+          <ng-container *ngIf="change.today">
+            <ion-col col-2 class="time center">{{change.time}}</ion-col>
+            <ion-col col-3 class="people center">{{change.pilot_work.pilot_id}} {{change.pilot_work.name}}</ion-col>
+            <ion-col col-3 class="people center">{{change.pilot_wait.pilot_id}} {{change.pilot_wait.name}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='I'" style="text-align: left">進港 / {{change.SP_ENAME}} /<br>S{{change.SP_INPORT}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='O'" >出港 / {{change.SP_ENAME}} /<br>{{change.SP_PORTPLACE}}->S{{change.SP_INPORT}} / {{change.SP_TOTDUN}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='T'">移泊 / {{change.SP_ENAME}} /<br>{{change.SP_PORTFROM}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+
+      <br><br>
+      <p class="dateP">{{date2}}</p>
+      <ion-grid class="z-depth-2" style="width: 150%">
+        <ion-row nowrap class="row-header">
+          <ion-col col-2 class="time">發生<br>時間</ion-col>
+          <ion-col col-3 class="people">連續帶船<br>引水人</ion-col>
+          <ion-col col-3 class="people">連續休息<br>引水人</ion-col>
+          <ion-col col-6 class="ship">船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
+        </ion-row>
+        <ion-row nowrap *ngFor="let change of changes">
+          <ng-container *ngIf="!change.today">
+            <ion-col col-2 class="time center">{{change.time}}</ion-col>
+            <ion-col col-3 class="people center">{{change.pilot_work.pilot_id}} {{change.pilot_work.name}}</ion-col>
+            <ion-col col-3 class="people center">{{change.pilot_wait.pilot_id}} {{change.pilot_wait.name}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='I'" style="text-align: left">進港 / {{change.SP_ENAME}} /<br>S{{change.SP_INPORT}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='O'" >出港 / {{change.SP_ENAME}} /<br>{{change.SP_PORTPLACE}}->S{{change.SP_INPORT}} / {{change.SP_TOTDUN}}</ion-col>
+            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='T'">移泊 / {{change.SP_ENAME}} /<br>{{change.SP_PORTFROM}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
+          </ng-container>
         </ion-row>
       </ion-grid>
     </ion-scroll>

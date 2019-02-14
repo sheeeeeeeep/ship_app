@@ -8,16 +8,15 @@
 
 
 <ion-content padding >
-  <ion-card *ngFor="let noti of tt" (click)="goNews()">
+  <ion-card *ngFor="let noti of notifs" (click)="goNews()">
     <ion-card-header class="cardHead notiHead">
       <span style="color: black">{{noti.time}}</span>
       <br><span class="dot_orange"></span>
-      {{noti.ship}}
-        <br>{{noti.head}}
+        {{noti.title}}
     </ion-card-header>
 
     <ion-card-content style="padding-top: 10px; font-size: 20px">
-      {{noti.detail}}
+      {{noti.body}}
     </ion-card-content>
 
   </ion-card>

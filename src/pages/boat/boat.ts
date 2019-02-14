@@ -17,26 +17,61 @@ export class BoatPage {
 
   public orders = [];
   public statuses = [];
+  public list = [];
+  public orderby = ["請假中(無代班)", "掛牌中", "工作中"];
+
 
   ionViewWillEnter(){
     this.backend.getOrder()
-        .subscribe(data => this.orders = data);
+        .subscribe(data => {
+          this.orders = data;
+          for(var i=0; i<this.orders.length; i++){
+            this.orders[i]['date'] = this.orders[i]['created'].split(" ", 2)[0];
+            this.orders[i]['time'] = this.orders[i]['created'].split(" ", 2)[1];
+          }
+    });
+
+
     this.backend.getStatus()
         .subscribe(data =>{
           this.statuses = data;
-          for (var _i = 0; _i < this.statuses.length; _i++){
-            console.log(this.statuses[_i].STS);
-              if (this.statuses[_i].SP_STS == "I"){
-                this.statuses[_i].SP_ID = this.statuses[_i].SP_INPORT + "->" + this.statuses[_i].SP_PORTPLACE;
-              }
-              if (this.statuses[_i].SP_STS == "O"){
-                this.statuses[_i].SP_ID = this.statuses[_i].SP_PORTPLACE + "->" + this.statuses[_i].SP_INPORT;
-              }
-              if (this.statuses[_i].SP_STS == "T"){
-                this.statuses[_i].SP_ID = this.statuses[_i].SP_PORTFROM + "->" + this.statuses[_i].SP_PORTPLACE;
-              }
-              console.log(this.statuses[_i].SP_ID);
-        }
+          for(var j=0; j<this.statuses.length; j++){
+            if(this.statuses[j]['pilot_status']=='掛牌中'){
+              this.statuses[j]['break_time']=(this.statuses[j]['break_start'].split("T",2)[1].substring(0,2)).concat("-",
+                                              this.statuses[j]['break_end'].split("T",2)[1].substring(0,2));
+            }
+          }
       });
+
     }
+
+    doRefresh(refresher) {
+      this.backend.getOrder()
+          .subscribe(data => {
+            this.orders = data;
+            for(var i=0; i<this.orders.length; i++){
+              this.orders[i]['date'] = this.orders[i]['created'].split(" ", 2)[0];
+              this.orders[i]['time'] = this.orders[i]['created'].split(" ", 2)[1];
+            }
+      });
+
+
+      this.backend.getStatus()
+          .subscribe(data =>{
+            this.statuses = data;
+            for(var j=0; j<this.statuses.length; j++){
+              if(this.statuses[j]['pilot_status']=='掛牌中'){
+                this.statuses[j]['break_time']=(this.statuses[j]['break_start'].split("T",2)[1].substring(0,2)).concat("-",
+                                                this.statuses[j]['break_end'].split("T",2)[1].substring(0,2));
+              }
+            }
+        });
+
+        setTimeout(() => {
+          refresher.complete();
+        }, 1500);
+
+    }
+
+
   }

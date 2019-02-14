@@ -6,15 +6,15 @@
 <ion-content padding>
   <h1 class="loginHead title">登入</h1>
 
-  <p class="loginP">帳號</p>
-  <ion-input type="text" class="box" [(ngModel)]="username"></ion-input>
+  <p class="loginP">帳號&nbsp;(預設為引水人編號，四碼)</p>
+  <ion-input type="text" [(ngModel)]="username" [ngClass]="inputBox" (ionFocus)="focus()" (ionBlur)="blur()"></ion-input>
   <div *ngIf="isWrongUser==true">
     <p class="errorP">查無此帳號</p>
   </div>
 
-  <br>
-  <p class="loginP">密碼</p>
-  <ion-input type="password" class="box" [(ngModel)]="password"></ion-input>
+  <br><br>
+  <p class="loginP">密碼&nbsp;(預設為引水人手機號碼)</p>
+  <ion-input type="password" [(ngModel)]="password" [ngClass]="inputBox2" (ionFocus)="focus2()" (ionBlur)="blur2()"></ion-input>
   <div *ngIf="isWrongPass==true">
     <p class="errorP">密碼錯誤</p>
   </div>

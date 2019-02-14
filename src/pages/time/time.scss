@@ -1,7 +1,52 @@
 page-time {
 
-}
-.item-cover {
-  width: 0;
-  height: 0;
+  .dateP{
+    font-size: 18px;
+    margin-bottom: 2%;
+    margin-top: 0;
+
+  }
+
+
+  .time{
+    max-width: 12%;
+    font-size: 18px;
+  }
+
+  .people{
+    max-width: 20%;
+    font-size: 18px;
+  }
+
+  .ship{
+    max-width: 48%;
+    font-size: 18px;
+  }
+
+
+  .shipC{
+    max-width: 48%;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .big{
+    font-size: 50px;
+    color: #707070;
+  }
+
+  .centerH{
+    align-items: baseline;
+    display: flex!important;
+    justify-content: center;
+    margin: 4%;
+  }
+
+  .duty{
+    padding-left: 2%;
+    padding-right: 9%;
+  }
+
+
+
 }

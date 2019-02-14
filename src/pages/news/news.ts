@@ -16,4 +16,18 @@ export class NewsPage {
     console.log('ionViewDidLoad NewsPage');
   }
 
+
+  doRefresh(refresher) {
+
+    var ifr = (<HTMLScriptElement[]><any>document.getElementsByName('web'))[0];
+    ifr.src = ifr.src;
+
+    setTimeout(() => {
+        refresher.complete();
+    }, 1500);
+
+  }
+
+
+
 }
