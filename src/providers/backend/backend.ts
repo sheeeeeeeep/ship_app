@@ -46,11 +46,11 @@ export class BackendProvider {
   }
 
   getAppcal(){
-    let url2 = this.url + "api/appcal/" + this.gv.UID.toString() + "/";
-    var res = this.http.get<IAppcal>(url2, { headers: new HttpHeaders({
+    let url2 = this.url + "api/appcal/";
+    var res = this.http.get<IAppcal[]>(url2, { headers: new HttpHeaders({
                                                   "Content-Type": "application/json",
                                                   "Authorization": `token ${this.gv.TOKEN}` })
-                                             });
+                                            });
     return res;
   }
 

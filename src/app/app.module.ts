@@ -21,7 +21,6 @@ import { NotifPage } from '../pages/notif/notif';
 import { SettingPage } from '../pages/setting/setting';
 import { ChangePassPage } from '../pages/change-pass/change-pass'
 
-
 import { BoatPageModule } from '../pages/boat/boat.module';
 import { FindPassPageModule } from '../pages/find-pass/find-pass.module';
 import { NewsPageModule } from '../pages/news/news.module';
@@ -30,11 +29,11 @@ import { SettingPageModule } from '../pages/setting/setting.module';
 import { TimePageModule } from '../pages/time/time.module';
 import { ChangePassPageModule } from '../pages/change-pass/change-pass.module'
 
-
-
 import { FcmProvider } from '../providers/fcm/fcm';
 import { GlobalVarProvider } from '../providers/global-var/global-var';
 import { BackendProvider } from '../providers/backend/backend';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 const firebaseConfifg = {
     apiKey: "AIzaSyCSLv9NbQutolSd4_WmXa0_9UkUB0Nl-dY",
@@ -87,6 +86,7 @@ const firebaseConfifg = {
     FcmProvider,
     GlobalVarProvider,
     BackendProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

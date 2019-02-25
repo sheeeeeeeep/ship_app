@@ -46,26 +46,27 @@ export class TimePage {
   ionViewWillEnter() {
     this.backend.getAppcal()
         .subscribe(data => {
-          this.join = data['join_continuous'];
-          this.accumulateWorkTime_h = Math.floor(data['accumulateWorkTime']/60);
-          this.accumulateWorkTime_m = data['accumulateWorkTime']%60;
-          this.new_person_day_h = Math.floor(data['thisDaytimeAve']/60);
-          this.new_person_day_m = data['thisDaytimeAve']%60;
-          this.new_person_night_h = Math.floor(data['thisNightAve']/60);
-          this.new_person_night_m = data['thisNightAve']%60;
-          this.new_group_day_h = Math.floor(data['thisDaytimeContAve']/60);
-          this.new_group_day_m = data['thisDaytimeContAve']%60;
-          this.new_group_night_h = Math.floor(data['thisNightContAve']/60);
-          this.new_group_night_m = data['thisNightContAve']%60;
+          console.log(data)
+          this.join = data[0]['join_continuous'];
+          this.accumulateWorkTime_h = Math.floor(data[0]['accumulateWorkTime']/60);
+          this.accumulateWorkTime_m = data[0]['accumulateWorkTime']%60;
+          this.new_person_day_h = Math.floor(data[0]['thisDaytimeAve']/60);
+          this.new_person_day_m = data[0]['thisDaytimeAve']%60;
+          this.new_person_night_h = Math.floor(data[0]['thisNightAve']/60);
+          this.new_person_night_m = data[0]['thisNightAve']%60;
+          this.new_group_day_h = Math.floor(data[0]['thisDaytimeContAve']/60);
+          this.new_group_day_m = data[0]['thisDaytimeContAve']%60;
+          this.new_group_night_h = Math.floor(data[0]['thisNightContAve']/60);
+          this.new_group_night_m = data[0]['thisNightContAve']%60;
 
-          this.old_person_day_h = Math.floor(data['lastDaytimeAve']/60);
-          this.old_person_day_m = data['lastDaytimeAve']%60;
-          this.old_person_night_h = Math.floor(data['lastNightAve']/60);
-          this.old_person_night_m = data['lastNightAve']%60;
-          this.old_group_day_h = Math.floor(data['lastDaytimeContAve']/60);
-          this.old_group_day_m = data['lastDaytimeContAve']%60;
-          this.old_group_night_h = Math.floor(data['lastNightContAve']/60);
-          this.old_group_night_m = data['lastNightContAve']%60;
+          this.old_person_day_h = Math.floor(data[0]['lastDaytimeAve']/60);
+          this.old_person_day_m = data[0]['lastDaytimeAve']%60;
+          this.old_person_night_h = Math.floor(data[0]['lastNightAve']/60);
+          this.old_person_night_m = data[0]['lastNightAve']%60;
+          this.old_group_day_h = Math.floor(data[0]['lastDaytimeContAve']/60);
+          this.old_group_day_m = data[0]['lastDaytimeContAve']%60;
+          this.old_group_night_h = Math.floor(data[0]['lastNightContAve']/60);
+          this.old_group_night_m = data[0]['lastNightContAve']%60;
     });
 
     this.backend.getChanges()
@@ -75,7 +76,9 @@ export class TimePage {
             this.changes[i]['date'] = this.changes[i]['occur_time'].split(" ", 2)[0];
             this.changes[i]['time'] = this.changes[i]['occur_time'].split(" ", 2)[1];
           }
-          this.date1 = this.changes[0]['date'];
+          if (this.changes.length > 0){
+            this.date1 = this.changes[0]['date'];
+          }
 
           for(var i2=1; i2<this.changes.length; i2++){
             if(this.changes[i2]['date']!=this.date1){
@@ -100,26 +103,26 @@ export class TimePage {
   doRefresh(refresher) {
     this.backend.getAppcal()
         .subscribe(data => {
-          this.join = data['join_continuous'];
-          this.accumulateWorkTime_h = Math.floor(data['accumulateWorkTime']/60);
-          this.accumulateWorkTime_m = data['accumulateWorkTime']%60;
-          this.new_person_day_h = Math.floor(data['thisDaytimeAve']/60);
-          this.new_person_day_m = data['thisDaytimeAve']%60;
-          this.new_person_night_h = Math.floor(data['thisNightAve']/60);
-          this.new_person_night_m = data['thisNightAve']%60;
-          this.new_group_day_h = Math.floor(data['thisDaytimeContAve']/60);
-          this.new_group_day_m = data['thisDaytimeContAve']%60;
-          this.new_group_night_h = Math.floor(data['thisNightContAve']/60);
-          this.new_group_night_m = data['thisNightContAve']%60;
+          this.join = data[0]['join_continuous'];
+          this.accumulateWorkTime_h = Math.floor(data[0]['accumulateWorkTime']/60);
+          this.accumulateWorkTime_m = data[0]['accumulateWorkTime']%60;
+          this.new_person_day_h = Math.floor(data[0]['thisDaytimeAve']/60);
+          this.new_person_day_m = data[0]['thisDaytimeAve']%60;
+          this.new_person_night_h = Math.floor(data[0]['thisNightAve']/60);
+          this.new_person_night_m = data[0]['thisNightAve']%60;
+          this.new_group_day_h = Math.floor(data[0]['thisDaytimeContAve']/60);
+          this.new_group_day_m = data[0]['thisDaytimeContAve']%60;
+          this.new_group_night_h = Math.floor(data[0]['thisNightContAve']/60);
+          this.new_group_night_m = data[0]['thisNightContAve']%60;
 
-          this.old_person_day_h = Math.floor(data['lastDaytimeAve']/60);
-          this.old_person_day_m = data['lastDaytimeAve']%60;
-          this.old_person_night_h = Math.floor(data['lastNightAve']/60);
-          this.old_person_night_m = data['lastNightAve']%60;
-          this.old_group_day_h = Math.floor(data['lastDaytimeContAve']/60);
-          this.old_group_day_m = data['lastDaytimeContAve']%60;
-          this.old_group_night_h = Math.floor(data['lastNightContAve']/60);
-          this.old_group_night_m = data['lastNightContAve']%60;
+          this.old_person_day_h = Math.floor(data[0]['lastDaytimeAve']/60);
+          this.old_person_day_m = data[0]['lastDaytimeAve']%60;
+          this.old_person_night_h = Math.floor(data[0]['lastNightAve']/60);
+          this.old_person_night_m = data[0]['lastNightAve']%60;
+          this.old_group_day_h = Math.floor(data[0]['lastDaytimeContAve']/60);
+          this.old_group_day_m = data[0]['lastDaytimeContAve']%60;
+          this.old_group_night_h = Math.floor(data[0]['lastNightContAve']/60);
+          this.old_group_night_m = data[0]['lastNightContAve']%60;
     });
 
     this.backend.getChanges()
