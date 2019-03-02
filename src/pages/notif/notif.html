@@ -8,6 +8,13 @@
 
 
 <ion-content padding >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="更新中">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let noti of notifs" (click)="goNews()">
     <ion-card-header class="cardHead notiHead">
       <span style="color: black">{{noti.time}}</span>

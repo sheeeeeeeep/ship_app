@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="300">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       refreshingSpinner="circles"

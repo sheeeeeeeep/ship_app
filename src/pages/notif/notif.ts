@@ -34,7 +34,13 @@ export class NotifPage {
     this.backend.getNotif()
         .subscribe(data => this.notifs = data);
   }
-
+  doRefresh(refresher){
+    this.backend.getNotif()
+        .subscribe(data => this.notifs = data);
+      setTimeout(() => {
+        refresher.complete();
+      }, 1500);
+  }
   clear(){
     this.storage.clear();
   }
