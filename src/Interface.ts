@@ -64,15 +64,57 @@ export interface IShip2{
 export interface IAppcal{
     join_continuous: boolean;
     accumulateWorkTime: number;
-    thisDaytimeAve: number;
-    thisNightAve: number;
-    lastDaytimeAve: number;
-    lastNightAve: number;
-    thisDaytimeContAve: number;
-    thisNightContAve: number;
-    lastDaytimeContAve: number;
-    lastNightContAve: number;
+    working_day: number;
+    zeroDaytimeAve: number;
+    zeroNightAve: number;
+    oneDaytimeAve: number;
+    oneNightAve: number;
+    twoDaytimeAve: number;
+    twoNightAve: number;
+    threeDaytimeAve: number;
+    threeNightAve: number;
+    fourDaytimeAve: number;
+    fourNightAve: number;
+    fiveDaytimeAve: number;
+    fiveNightAve: number;
+    sixDaytimeAve: number;
+    sixNightAve: number;
+    sevenDaytimeAve: number;
+    sevenNightAve: number;
+    eightDaytimeAve: number;
+    eightNightAve: number;
+    nineDaytimeAve: number;
+    nineNightAve: number;
+    tenDaytimeAve: number;
+    tenNightAve: number;
+    elevenDaytimeAve: number;
+    elevenNightAve: number;
+    zeroDaytimeContAve: number;
+    zeroNightContAve: number;
+    oneDaytimeContAve: number;
+    oneNightContAve: number;
+    twoDaytimeContAve: number;
+    twoNightContAve: number;
+    threeDaytimeContAve: number;
+    threeNightContAve: number;
+    fourDaytimeContAve: number;
+    fourNightContAve: number;
+    fiveDaytimeContAve: number;
+    fiveNightContAve: number;
+    sixDaytimeContAve: number;
+    sixNightContAve: number;
+    sevenDaytimeContAve: number;
+    sevenNightContAve: number;
+    eightDaytimeContAve: number;
+    eightNightContAve: number;
+    nineDaytimeContAve: number;
+    nineNightContAve: number;
+    tenDaytimeContAve: number;
+    tenNightContAve: number;
+    elevenDaytimeContAve: number;
+    elevenNightContAve: number;
 }
+
 
 export interface IChange{
     id: number;
