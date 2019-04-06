@@ -44,25 +44,109 @@
         </ion-card-header>
         <ion-card-content>
           <ion-select [(ngModel)]="date_person" multiple="false" class="myTime">
-            <ion-option value="new">這個月</ion-option>
-            <ion-option value="old">上個月</ion-option>
+            <ion-option value="zero">這個月</ion-option>
+            <ion-option value="one">上個月</ion-option>
+            <ion-option *ngFor="let x of xs; let i = index" [value]="values[i]">{{years[i+2]}} / {{months[i+2]}}</ion-option>
           </ion-select>
-          <span style="font-size: 20px" *ngIf="date_person == 'new'">
+
+          <span style="font-size: 20px" *ngIf="date_person == 'zero'">
             <span class="duty">白天班</span>
-            <span class="right"><span class="big">{{new_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{zero_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{zero_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
-          <span style="font-size: 20px" *ngIf="date_person == 'old'">
+          <span style="font-size: 20px" *ngIf="date_person == 'one'">
             <span class="duty">白天班</span>
-            <span class="right"><span class="big">{{old_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{one_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{one_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'two'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{two_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{two_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'three'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{three_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{three_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'four'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{four_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{four_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'five'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{five_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{five_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'six'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{six_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{six_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'seven'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{seven_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{seven_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'eight'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{eight_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eight_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'nine'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{nine_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{nine_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'ten'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{ten_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{ten_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'eleven'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{eleven_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eleven_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+
+
           <br><br>
-          <span style="font-size: 20px" *ngIf="date_person == 'new'">
+          <span style="font-size: 20px" *ngIf="date_person == 'zero'">
             <span class="duty">大夜班</span>
-            <span class="right"><span class="big">{{new_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{zero_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{zero_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
-          <span style="font-size: 20px" *ngIf="date_person == 'old'">
+          <span style="font-size: 20px" *ngIf="date_person == 'one'">
             <span class="duty">大夜班</span>
-            <span class="right"><span class="big">{{old_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{one_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{one_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'two'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{two_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{two_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'three'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{three_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{three_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'four'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{four_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{four_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'five'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{five_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{five_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'six'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{six_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{six_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'seven'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{seven_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{seven_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'eight'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{eight_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eight_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'nine'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{nine_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{nine_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'ten'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{ten_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{ten_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_person == 'eleven'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{eleven_person_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eleven_person_night_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
         </ion-card-content>
       </ion-card>
@@ -73,25 +157,107 @@
         </ion-card-header>
         <ion-card-content>
           <ion-select [(ngModel)]="date_group" multiple="false" class="myTime">
-            <ion-option value="neww">這個月</ion-option>
-            <ion-option value="oldd">上個月</ion-option>
+            <ion-option value="zeroo">這個月</ion-option>
+            <ion-option value="onee">上個月</ion-option>
+            <ion-option *ngFor="let x of xs; let i = index" [value]="values_g[i]">{{years[i+2]}} / {{months[i+2]}}</ion-option>
           </ion-select>
-          <span style="font-size: 20px" *ngIf="date_group == 'neww'">
+          <span style="font-size: 20px" *ngIf="date_group == 'zeroo'">
             <span class="duty">白天班</span>
-            <span class="right"><span class="big">{{new_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{zero_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{zero_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
-          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">
+          <span style="font-size: 20px" *ngIf="date_group == 'onee'">
             <span class="duty">白天班</span>
-            <span class="right"><span class="big">{{old_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{one_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{one_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'twoo'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{two_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{two_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'threee'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{three_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{three_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'fourr'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{four_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{four_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'fivee'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{five_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{five_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'sixx'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{six_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{six_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'sevenn'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{seven_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{seven_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'eightt'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{eight_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eight_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'ninee'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{nine_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{nine_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'tenn'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{ten_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{ten_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'elevenn'">
+            <span class="duty">白天班</span>
+            <span class="right"><span class="big">{{eleven_group_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eleven_group_day_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+
           <br><br>
-          <span style="font-size: 20px" *ngIf="date_group == 'neww'">
+          <span style="font-size: 20px" *ngIf="date_group == 'zeroo'">
             <span class="duty">大夜班</span>
-            <span class="right"><span class="big">{{new_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{new_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{zero_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{zero_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
-          <span style="font-size: 20px" *ngIf="date_group == 'oldd'">
+          <span style="font-size: 20px" *ngIf="date_group == 'onee'">
             <span class="duty">大夜班</span>
-            <span class="right"><span class="big">{{old_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{old_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+            <span class="right"><span class="big">{{one_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{one_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'twoo'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{two_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{two_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'threee'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{three_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{three_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'fourr'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{four_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{four_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'fivee'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{five_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{five_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'sixx'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{six_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{six_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'sevenn'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{seven_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{seven_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'eightt'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{eight_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eight_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'ninee'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{nine_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{nine_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'tenn'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{ten_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{ten_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
+          </span>
+          <span style="font-size: 20px" *ngIf="date_group == 'elevenn'">
+            <span class="duty">大夜班</span>
+            <span class="right"><span class="big">{{eleven_group_night_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eleven_group_night_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
         </ion-card-content>
       </ion-card>
