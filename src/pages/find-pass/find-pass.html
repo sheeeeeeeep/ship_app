@@ -17,8 +17,8 @@
   <div *ngIf="isWrong==true">
     <p class="errorP">輸入錯誤</p>
   </div>
-  <button ion-button block (click)="sendPhone()" class="marginBox">送出</button>
-  <p class="loginP or">或是</p>
-  <button ion-button block (click)="backLogin()" class="lButton">返回登入畫面</button>
+  <button ion-button block (click)="sendPhone()" class="marginBox" [disabled]="disable">送出</button>
+  <p class="or loginP">或是</p>
+  <button ion-button block (click)="backLogin()" class="lButton" [disabled]="disable">返回登入畫面</button>
 
 </ion-content>

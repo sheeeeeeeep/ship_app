@@ -31,16 +31,20 @@ export class FindPassPage {
   phone: string;
   isWrong: boolean = false;
   inputBox: string = "box";
+  disable: boolean = false;
 
   focus(){
+    this.isWrong = false;
     this.inputBox = "boxFocus";
   }
 
   blur(){
+    this.isWrong = false;
     this.inputBox = "box";
   }
 
   sendPhone(){
+    this.disable = true;
     this.isWrong = false;
     this.backend.sendPhone(this.phone)
       .subscribe(data => {
@@ -49,11 +53,13 @@ export class FindPassPage {
       }, error =>{
         console.log(error);
         this.isWrong = true;
+        this.disable = false;
       });
 
   }
 
   backLogin(){
+    this.disable = true;
     this.navCtrl.pop();
   }
 

@@ -27,7 +27,7 @@ export class SettingPage {
   id:string;
   name:string;
   isPush: boolean;
-  version = "1.6.0";
+  version = "1.7.0";
 
   ionViewDidLoad() {
   }

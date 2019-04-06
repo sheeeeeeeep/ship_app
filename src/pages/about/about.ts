@@ -29,8 +29,11 @@ export class AboutPage {
   isWrongPass: boolean = false;
   inputBox: string = "box";
   inputBox2: string = "box";
+  disable: boolean = false;
+
 
   goHome(){
+    this.disable = true;
     this.isWrongUser = false;
     this.isWrongPass = false;
 
@@ -54,11 +57,13 @@ export class AboutPage {
 
         }else{
           this.isWrongUser = true;
+          this.disable = false;
         }
 
       }, error => {
         console.log(error);
         this.isWrongPass = true;
+        this.disable = false;
       });
   }
 
@@ -67,18 +72,26 @@ export class AboutPage {
   }
 
   focus(){
+    this.isWrongUser = false;
+    this.isWrongPass = false;
     this.inputBox = "boxFocus";
   }
 
   blur(){
+    this.isWrongUser = false;
+    this.isWrongPass = false;
     this.inputBox = "box";
   }
 
   focus2(){
+    this.isWrongUser = false;
+    this.isWrongPass = false;
     this.inputBox2 = "boxFocus";
   }
 
   blur2(){
+    this.isWrongUser = false;
+    this.isWrongPass = false;
     this.inputBox2 = "box";
   }
 }

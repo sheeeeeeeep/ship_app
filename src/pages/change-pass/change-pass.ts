@@ -25,10 +25,13 @@ export class ChangePassPage {
   isWrongEnter: boolean = false;
   inputBox: string = "box";
   inputBox2: string = "box";
+  disable: boolean = false;
 
   sendPass(){
+    this.disable = true;
     if(this.password != this.passB){
       this.isWrongEnter = true;
+      this.disable = false;
     }else{
       this.backend.changePass(this.password)
         .subscribe(data => {
@@ -37,24 +40,29 @@ export class ChangePassPage {
         }, error =>{
           console.log(error);
           this.isWrongEnter = true;
+          this.disable = false;
         });
 
     }
   }
 
   focus(){
+    this.isWrongEnter = false;
     this.inputBox = "boxFocus";
   }
 
   blur(){
+    this.isWrongEnter = false;
     this.inputBox = "box";
   }
 
   focus2(){
+    this.isWrongEnter = false;
     this.inputBox2 = "boxFocus";
   }
 
   blur2(){
+    this.isWrongEnter = false;
     this.inputBox2 = "box";
   }
 
