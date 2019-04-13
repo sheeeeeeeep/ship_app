@@ -15,15 +15,18 @@
 
 </ion-header>
 
+
+
+
 <ion-content padding>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="300">
+
+ <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="300" [enabled]="refresherEnabled">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      refreshingSpinner="circles"
+      refreshingSpinner="crescent"
       refreshingText="更新中">
     </ion-refresher-content>
   </ion-refresher>
-
 
   <div [ngSwitch] = "subPage">
 
@@ -32,6 +35,9 @@
         <ion-col col-2 style="font-size: 18px" class="cols">順位</ion-col>
         <ion-col col-5 style="font-size: 18px" class="cols">引水人</ion-col>
         <ion-col col-5 style="font-size: 18px" class="cols">報到時間</ion-col>
+      </ion-row>
+      <ion-row>
+
       </ion-row>
       <ion-row *ngFor = "let order of orders;let i=index">
         <ion-col col-2 style="font-size: 18px" class="center cols">{{i+1}}</ion-col>
@@ -44,7 +50,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-scroll scrollX="true" scrollY="true" class="horizonScroll">
+    <ion-scroll scrollX="true" scrollY="true" class="horizonScroll" #scrollItem>
       <ion-grid *ngSwitchCase="'status'" class="z-depth-2 tablePage" style="width: 150%">
         <ion-row nowrap class="row-header">
           <ion-col col-3 class="people">引水人</ion-col>
