@@ -148,7 +148,8 @@ export class TimePage {
   ionViewWillEnter() {
     let now = new Date();
     this.zero_year = now.getFullYear();
-    this.zero_month = now.getMonth();
+    this.zero_month = now.getMonth() + 1;
+    console.log(this.zero_month);
     var xss = 0;
     for(var j=0; j<12; j++){      
       this.xs[xss] = xss;
@@ -160,6 +161,7 @@ export class TimePage {
         this.years[j] = this.years[j]-1;
       }
     }
+    console.log(this.months);
 
     this.backend.getAppcal()
         .subscribe(data => {
