@@ -19,11 +19,11 @@ export class TimePage {
   date1: string;
   date2: string ;
 
-  zero_year: number = 2019;
-  zero_month: number = 4;
+  zero_year: number;
+  zero_month: number;
   xs: number[] = [0];
-  values: string[] = ["two", "three", "four", "five", "six", "seven", "eight", "night", "ten", "eleven"];
-  values_g: string[] = ["twoo", "threee", "fourr", "fivee", "sixx", "sevenn", "eightt", "nightt", "tenn", "elevenn"];
+  values: string[] = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "night", "ten", "eleven"];
+  values_g: string[] = ["zeroo", "onee", "twoo", "threee", "fourr", "fivee", "sixx", "sevenn", "eightt", "nightt", "tenn", "elevenn"];
   months: number[] = [0];
   years: number[] = [0];
 
@@ -142,9 +142,11 @@ export class TimePage {
   changes = [];
 
   ionViewWillEnter() {
-
+    let now = new Date();
+    this.zero_year = now.getFullYear();
+    this.zero_month = now.getMonth();
     var xss = 0;
-    for(var j=2; j<12; j++){      
+    for(var j=0; j<12; j++){      
       this.xs[xss] = xss;
       xss = xss + 1;
       this.months[j] = this.zero_month-j;

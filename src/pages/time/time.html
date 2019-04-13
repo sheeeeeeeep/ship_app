@@ -44,9 +44,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-select [(ngModel)]="date_person" multiple="false" class="myTime">
-            <ion-option value="zero">這個月</ion-option>
-            <ion-option value="one">上個月</ion-option>
-            <ion-option *ngFor="let x of xs; let i = index" [value]="values[i]">{{years[i+2]}} / {{months[i+2]}}</ion-option>
+            <ion-option *ngFor="let x of xs; let i = index" [value]="values[i]">{{years[i]}} / {{months[i]}}</ion-option>
           </ion-select>
 
           <span style="font-size: 20px" *ngIf="date_person == 'zero'">
@@ -157,9 +155,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-select [(ngModel)]="date_group" multiple="false" class="myTime">
-            <ion-option value="zeroo">這個月</ion-option>
-            <ion-option value="onee">上個月</ion-option>
-            <ion-option *ngFor="let x of xs; let i = index" [value]="values_g[i]">{{years[i+2]}} / {{months[i+2]}}</ion-option>
+            <ion-option *ngFor="let x of xs; let i = index" [value]="values_g[i]">{{years[i]}} / {{months[i]}}</ion-option>
           </ion-select>
           <span style="font-size: 20px" *ngIf="date_group == 'zeroo'">
             <span class="duty">白天班</span>
