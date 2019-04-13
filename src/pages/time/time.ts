@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content, Scroll  } from 'ionic-angular';
 import { BackendProvider } from '../../providers/backend/backend';
 
 @IonicPage()
@@ -12,12 +12,17 @@ export class TimePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public  backend:BackendProvider) {
   }
 
+  @ViewChild('scrollItem') scrollItem: Scroll;
+
+
   title:string = "統計資訊";
   subPage: string = "time";
   date_person = "zero";
   date_group = "zeroo";
   date1: string;
   date2: string ;
+
+  refresherEnabled : boolean= true;
 
   zero_year: number = 2019;
   zero_month: number = 4;
@@ -144,7 +149,7 @@ export class TimePage {
   ionViewWillEnter() {
 
     var xss = 0;
-    for(var j=2; j<12; j++){      
+    for(var j=2; j<12; j++){
       this.xs[xss] = xss;
       xss = xss + 1;
       this.months[j] = this.zero_month-j;
@@ -448,6 +453,20 @@ export class TimePage {
       }, 1500);
 
   }
+
+  ngAfterViewInit() {
+    if (this.scrollItem) {
+        this.scrollItem.addScrollEventListener((ev) => {
+          if(ev.target.scrollTop>10){
+            this.refresherEnabled=false;
+          }else{
+            this.refresherEnabled=true;
+          }
+
+        });
+    }
+  }
+
 
 
 }

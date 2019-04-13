@@ -16,10 +16,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="300">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="300" [enabled]="refresherEnabled">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      refreshingSpinner="circles"
+      refreshingSpinner="crescent"
       refreshingText="更新中">
     </ion-refresher-content>
   </ion-refresher>
@@ -263,7 +263,7 @@
       </ion-card>
     </div>
 
-    <ion-scroll scrollX="true" class="horizonScroll" *ngSwitchCase="'record'">
+    <ion-scroll scrollX="true" class="horizonScroll" *ngSwitchCase="'record'" #scrollItem>
       <p class="dateP">{{date1}}</p>
       <ion-grid class="z-depth-2" style="width: 150%">
         <ion-row nowrap class="row-header">

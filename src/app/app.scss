@@ -162,6 +162,9 @@ ion-header ion-icon.back-button-icon.icon {
     color: white;
 }
 
+ion-refresher {
+    top: 150px !important;
+}
 
 
   a.tab-button[aria-selected=true]:nth-of-type(1) {

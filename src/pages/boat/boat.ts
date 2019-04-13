@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content, Scroll } from 'ionic-angular';
 import { BackendProvider } from '../../providers/backend/backend';
+
 
 @IonicPage()
 @Component({
   selector: 'page-boat',
   templateUrl: 'boat.html',
 })
+
+
 export class BoatPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public  backend:BackendProvider) {
   }
+
 
   subPage: string = "order";
   title:string = "當班資訊";
@@ -19,7 +23,11 @@ export class BoatPage {
   public statuses = [];
   public list = [];
   public orderby = ["請假中(無代班)", "掛牌中", "工作中"];
+  public pos: string;
+  public refresherEnabled : boolean= true;
 
+  @ViewChild(Content) content: Content;
+  @ViewChild('scrollItem') scrollItem: Scroll;
 
   ionViewWillEnter(){
     this.backend.getOrder()
@@ -42,10 +50,14 @@ export class BoatPage {
             }
           }
       });
+  }
 
+  doRefresh(refresher) {
+    if(this.scrollItem._scrollContent.nativeElement.scrollTop>20){
+      this.refresherEnabled = false;
     }
 
-    doRefresh(refresher) {
+
       this.backend.getOrder()
           .subscribe(data => {
             this.orders = data;
@@ -72,6 +84,32 @@ export class BoatPage {
         }, 1500);
 
     }
+
+
+  /*onScroll(event){
+    this.refresherEnabled=false;
+    this.title="on scroll";
+
+    setTimeout( () => {
+      this.refresherEnabled=true;
+      this.title="can re"
+    }, 500);*/
+
+  ngAfterViewInit() {
+    if (this.scrollItem) {
+        this.scrollItem.addScrollEventListener((ev) => {
+          if(ev.target.scrollTop>10){
+            this.refresherEnabled=false;
+          }else{
+            this.refresherEnabled=true;
+          }
+
+        });
+    }
+  }
+
+
+
 
 
   }
