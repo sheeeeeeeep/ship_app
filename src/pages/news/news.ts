@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BackendProvider } from '../../providers/backend/backend';
 import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 
-
 @IonicPage()
 @Component({
   selector: 'page-news',
@@ -34,7 +33,6 @@ export class NewsPage {
   title:string = "公開資訊";
   ionViewDidLoad() {
     // console.log('ionViewDidLoad NewsPage');
-
   }
   public openWithInAppBrowser(url : string){
     let target = "_blank";
@@ -45,14 +43,11 @@ export class NewsPage {
   }
 
   doRefresh(refresher) {
-
     var ifr = (<HTMLScriptElement[]><any>document.getElementsByName('web'))[0];
     ifr.src = ifr.src;
 
     setTimeout(() => {
         refresher.complete();
     }, 1500);
-
   }
-
 }

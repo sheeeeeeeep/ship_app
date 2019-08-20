@@ -12,9 +12,7 @@ export class ChangePassPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public backend:BackendProvider) {
   }
 
-
   title: string = "更換密碼";
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangePassPage');
@@ -65,8 +63,4 @@ export class ChangePassPage {
     this.isWrongEnter = false;
     this.inputBox2 = "box";
   }
-
-
-
-
 }

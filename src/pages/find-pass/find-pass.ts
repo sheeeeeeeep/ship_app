@@ -5,14 +5,6 @@ import { AboutPage } from '../about/about';
 // import { SmsPage } from '../sms/sms';
 import { BackendProvider } from '../../providers/backend/backend';
 
-
-/**
- * Generated class for the FindPassPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-find-pass',
@@ -55,12 +47,10 @@ export class FindPassPage {
         this.isWrong = true;
         this.disable = false;
       });
-
   }
 
   backLogin(){
     this.disable = true;
     this.navCtrl.pop();
   }
-
 }

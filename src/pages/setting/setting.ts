@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage';
 import { FcmProvider } from '../../providers/fcm/fcm';
 import { ChangePassPage } from '../change-pass/change-pass';
 
-
 @IonicPage()
 @Component({
   selector: 'page-setting',
@@ -55,5 +54,4 @@ export class SettingPage {
   goChangePass(){
     this.navCtrl.push(ChangePassPage);
   }
-
 }

@@ -14,7 +14,6 @@ export class TimePage {
 
   @ViewChild('scrollItem') scrollItem: Scroll;
 
-
   title:string = "統計資訊";
   subPage: string = "time";
   date_person = "zero";
@@ -308,8 +307,6 @@ export class TimePage {
 
   }
 
-
-
   doRefresh(refresher) {
     this.backend.getAppcal()
         .subscribe(data => {
@@ -454,7 +451,6 @@ export class TimePage {
       setTimeout(() => {
         refresher.complete();
       }, 1500);
-
   }
 
   ngAfterViewInit() {
@@ -465,11 +461,7 @@ export class TimePage {
           }else{
             this.refresherEnabled=true;
           }
-
         });
     }
   }
-
-
-
 }

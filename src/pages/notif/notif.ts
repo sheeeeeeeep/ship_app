@@ -10,7 +10,6 @@ import { BackendProvider } from '../../providers/backend/backend';
   templateUrl: 'notif.html'
 })
 
-
 export class NotifPage {
   shit = '';
   notifs = [];

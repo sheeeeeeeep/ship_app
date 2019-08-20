@@ -8,9 +8,7 @@ export class BackendProvider {
 
   constructor(public http: HttpClient,  public gv: GlobalVarProvider) {
   }
-
     private url: string = "https://certain-purpose-228904.appspot.com/";
-    // private url: string = "http://192.168.1.123:8000/";
 
   getAuth(username: string, password: string){
     let url2 = this.url + "authenticate/pilot/";

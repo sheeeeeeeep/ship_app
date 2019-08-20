@@ -3,7 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { NewsPage } from './news';
 import { PinchZoomModule } from 'ngx-pinch-zoom';
 
-
 @NgModule({
   declarations: [
     NewsPage,

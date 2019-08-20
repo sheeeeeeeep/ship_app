@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title style="text-align:center">{{title}}</ion-title>
   </ion-navbar>
@@ -12,7 +11,6 @@
       連續帶船紀錄
     </ion-segment-button>
   </ion-segment>
-
 </ion-header>
 
 <ion-content padding>
@@ -36,7 +34,6 @@
 
         </ion-card-content>
       </ion-card>
-
 
       <ion-card>
         <ion-card-header class="cardHead">
@@ -95,7 +92,6 @@
             <span class="duty">白天班</span>
             <span class="right"><span class="big">{{eleven_person_day_h}}</span>&nbsp;&nbsp;小時&nbsp;&nbsp;<span class="big">{{eleven_person_day_m}}</span>&nbsp;&nbsp;分鐘</span>
           </span>
-
 
           <br><br>
           <span style="font-size: 20px" *ngIf="date_person == 'zero'">
@@ -269,38 +265,15 @@
           <ion-col col-6 class="ship">船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
         </ion-row>
         <ion-row nowrap *ngFor="let change of changes">
-          <!-- <ng-container *ngIf="change.today"> -->
             <ion-col col-2 class="time center">{{change.time}}</ion-col>
             <ion-col col-3 class="people center">{{change.pilot_work.pilot_id}} {{change.pilot_work.name}}</ion-col>
             <ion-col col-3 class="people center">{{change.pilot_wait.pilot_id}} {{change.pilot_wait.name}}</ion-col>
             <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='I'" style="text-align: left">進港 / {{change.SP_ENAME}} /<br>S{{change.SP_INPORT}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
             <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='O'" >出港 / {{change.SP_ENAME}} /<br>{{change.SP_PORTPLACE}}->S{{change.SP_INPORT}} / {{change.SP_TOTDUN}}</ion-col>
             <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='T'">移泊 / {{change.SP_ENAME}} /<br>{{change.SP_PORTFROM}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
-          <!-- </ng-container> -->
         </ion-row>
       </ion-grid>
-
       <br><br>
-      <!-- <p class="dateP">{{date2}}</p>
-      <ion-grid class="z-depth-2" style="width: 150%">
-        <ion-row nowrap class="row-header">
-          <ion-col col-2 class="time">發生<br>時間</ion-col>
-          <ion-col col-3 class="people">連續帶船<br>引水人</ion-col>
-          <ion-col col-3 class="people">連續休息<br>引水人</ion-col>
-          <ion-col col-6 class="ship">船舶資訊(狀態/船名/碼頭/噸位)</ion-col>
-        </ion-row>
-        <ion-row nowrap *ngFor="let change of changes">
-          <ng-container *ngIf="!change.today">
-            <ion-col col-2 class="time center">{{change.time}}</ion-col>
-            <ion-col col-3 class="people center">{{change.pilot_work.pilot_id}} {{change.pilot_work.name}}</ion-col>
-            <ion-col col-3 class="people center">{{change.pilot_wait.pilot_id}} {{change.pilot_wait.name}}</ion-col>
-            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='I'" style="text-align: left">進港 / {{change.SP_ENAME}} /<br>S{{change.SP_INPORT}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
-            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='O'" >出港 / {{change.SP_ENAME}} /<br>{{change.SP_PORTPLACE}}->S{{change.SP_INPORT}} / {{change.SP_TOTDUN}}</ion-col>
-            <ion-col col-6 class="shipC" *ngIf="change.SP_STS=='T'">移泊 / {{change.SP_ENAME}} /<br>{{change.SP_PORTFROM}}->{{change.SP_PORTPLACE}} / {{change.SP_TOTDUN}}</ion-col>
-          </ng-container>
-        </ion-row>
-      </ion-grid> -->
     </ion-scroll>
-
   </div>
 </ion-content>
