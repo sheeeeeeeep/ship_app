@@ -1,8 +1,12 @@
 # ship_app
 app for kaoshiung port pilots
+
+android ndk 要 修订版 16b
+
 ### install dependencies
 ```
 npm install
+ionic cordova platform add android
 ```
 
 ### run on simulator
