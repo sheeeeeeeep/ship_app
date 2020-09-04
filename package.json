@@ -47,7 +47,7 @@
     "cordova-plugin-firebase-analytics": "3.0.0",
     "cordova-plugin-firebase-crash-report": "^1.0.9",
     "cordova-plugin-firebase-extended-notification": "^2.1.0",
-    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-ionic": "^5.2.7",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^2.5.1",
